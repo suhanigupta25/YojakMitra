@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.send("MyBharat Backend Running 🚀");
+    res.send("YojnaMitra Backend Running 🚀");
 });
 
 export default app;

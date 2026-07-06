@@ -1,16 +1,10 @@
-import React from 'react';
-import "./App.css";
-import Navbar from './components/Navbar/Navbar';
-import Hero from './components/Hero/Hero';
+import { useState } from 'react'
+import './App.css'
 
-const  App =()=> {
-  return (
-    <div className="App">
-      <Navbar/>
-      <Hero/>
-
-    </div>
+function App() {
+   return (
+    
   );
 }
 
-export default App;
+export default App
