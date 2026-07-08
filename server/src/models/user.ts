@@ -1,8 +1,9 @@
 //model-> structure
 //schma is for mongoose
-import {Schema,model,InferSchemaType} from "mongoose";
 
-interface RegisterUserDto {
+import {Schema,model} from "mongoose";
+
+export interface RegisteredUser {
     name: string;
     age: number;
     gender: string;
@@ -11,14 +12,27 @@ interface RegisterUserDto {
     password: string;
 }
 
-interface LoginUserDto {
-    email: string;
+export interface LoginUser {
+    username: string;
     password: string;
 }
 
-const userSchema=new mongoose.Schema<MyUser>(
-    {
-        username: {
+const userSchema=new Schema<RegisteredUser>(
+    {   
+        name: {
+           type: String,
+            required: true 
+        },
+        age: {
+            type: Number,
+            required: true
+        },
+        
+        gender: {
+            type: String,
+            required: true
+        } 
+        ,username: {
             type: String,
             required: true,
             unique:true
@@ -32,21 +46,9 @@ const userSchema=new mongoose.Schema<MyUser>(
             type:String,
             required: true
             
-        },
-        age: {
-            type: Number,
-            required: true
-        },
-        gender: {
-            type: String,
-            required: true
-        },
-        name: {
-           type: String,
-            required: true 
-        }
+        }       
     }
 );
 
-const User=mongoose.model<MyUser>('User',userSchema);
+const User=model<RegisteredUser>('User',userSchema);
 export default User;
