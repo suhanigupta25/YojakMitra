@@ -11,7 +11,7 @@ interface Token{
   accessToken: string;
 }
 
-class AuthService {
+export class AuthService {
   private readonly jwtSecret: string;
   private readonly jwtExpiresIn: string;
 
@@ -31,7 +31,7 @@ class AuthService {
         return { accessToken};
     }
 
-    private verifyAccessToken(token: string): TokenPayload {
+    public verifyAccessToken(token: string): TokenPayload {
         try {
             return jwt.verify(token, this.jwtSecret) as TokenPayload;
         } catch (error) {
@@ -81,7 +81,6 @@ class AuthService {
 
 }
 
-export default AuthService;
 
 
 //routes-> deciding whihc url pe konsa function chlega
