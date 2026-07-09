@@ -1,202 +1,207 @@
-/* Hero Section Container */
+/* Container & Base Layout */
 .hero-section {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 4rem;
-    padding: 5rem 2rem;
-    max-width: 1200px;
+    gap: 5rem; /* Increased for breathing room */
+    padding: 7rem 2rem; /* Editorial padding */
+    max-width: 1260px;
     margin: 0 auto;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: #ffffff;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #faf7f2;
     overflow: hidden;
 }
 
-/* Left Side: Content Wrapper */
 .hero-content {
-    flex: 1;
+    flex: 1.2; /* Let the text breathe and dominate the visual hierarchy */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-/* Modern AI Micro-Tagline */
+/* Editorial Tagline (No rounded pill shapes) */
 .tagline {
-    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-    color: #1d4ed8; /* Premium Indigo/Blue */
+    background: transparent;
+    color: #8c7b70;
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    border: 1px solid #bfdbfe;
-    margin-bottom: 1.5rem;
+    letter-spacing: 0.2em; /* Widely spaced for a high-end feel */
+    padding: 0 0 0.5rem 0;
+    border-bottom: 2px solid #e8e1db; /* Clean underline instead of a bubble tag */
+    margin-bottom: 2rem;
     display: inline-block;
 }
 
-/* Typography Hierarchy */
+/* Premium Editorial Typography */
 .displayinfo h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    color: #0f172a;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    margin: 0 0 1.25rem 0;
+    font-family: 'Playfair Display', serif; /* Authentic editorial serifs */
+    font-size: 4rem; /* Larger, more striking size */
+    font-weight: 400; /* Regular weight in high-end serifs looks more human than bold */
+    color: #3d342f;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0 0 1.75rem 0;
 }
 
-/* Beautiful gradient text accent */
+/* Subtle, authentic text treatment instead of a bright synthetic gradient */
 .gradient-text {
-    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: none;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    color: #a88a75;
+    font-style: italic; /* Adding an italic accent gives a crafted, human touch */
 }
 
-/* Changed from h3 to p element styling for semantic clean text body */
 .hero-subtitle {
-    font-size: 1.125rem;
-    color: #475569;
-    line-height: 1.6;
-    margin-bottom: 2.5rem;
+    font-family: inherit;
+    font-size: 1.05rem;
+    color: #7a6e67;
+    line-height: 1.75;
+    margin-bottom: 3rem;
     font-weight: 400;
-    max-width: 540px;
+    max-width: 480px;
+    letter-spacing: -0.01em;
 }
 
-/* Action Buttons Flexbox Wrapper */
+/* Action Buttons (Flat, sharp, intentional) */
 .hero-actions {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 3.5rem;
-    width: 100%;
+    gap: 1.25rem;
+    margin-bottom: 4.5rem;
+    width: auto; /* Keeps buttons from looking like a giant stretched block */
 }
 
-/* Primary AI-Action Call To Action Button */
 .btn-primary {
-    background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 1rem;
-    padding: 0.875rem 2rem;
-    border: none;
-    border-radius: 8px;
+    background: #3d342f;
+    color: #faf7f2;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    padding: 1rem 2.25rem;
+    border: 1px solid #3d342f;
+    border-radius: 2px; /* Sharp, architecturally clean corners instead of round pills */
     cursor: pointer;
-    box-shadow: 0 4px 6px -1px rgba(29, 78, 216, 0.2), 0 2px 4px -2px rgba(29, 78, 216, 0.2);
-    transition: all 0.2s ease;
+    box-shadow: none; /* Removed the default soft-blur glow */
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgba(29, 78, 216, 0.3), 0 4px 6px -2px rgba(29, 78, 216, 0.3);
-    filter: brightness(1.05);
+    background: #faf7f2;
+    color: #3d342f;
+    transform: none; /* No artificial floating animations */
 }
 
-/* Secondary Button Style */
 .btn-secondary {
-    background-color: #ffffff;
-    color: #334155;
-    font-weight: 600;
-    font-size: 1rem;
-    padding: 0.875rem 2rem;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    background-color: transparent;
+    color: #3d342f;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 1rem 2.25rem;
+    border: 1px solid #d4ccc6;
+    border-radius: 2px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-secondary:hover {
-    background-color: #f8fafc;
-    border-color: #94a3b8;
-    color: #0f172a;
+    background-color: #3d342f;
+    border-color: #3d342f;
+    color: #faf7f2;
 }
 
 /* Data / Trust Statistics Strip */
 .displaydata {
     display: flex;
-    gap: 2.5rem;
-    border-top: 1px solid #e2e8f0;
-    padding-top: 2rem;
+    gap: 4rem;
+    border-top: 1px solid #e8e1db;
+    padding-top: 2.5rem;
     width: 100%;
 }
 
 .stat-item {
     display: flex;
     flex-direction: column;
+    gap: 0.25rem;
 }
 
 .stat-number {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: #0f172a;
+    font-family: "Didot", "Bodoni MT", "Georgia", serif;
+    font-size: 2.25rem;
+    font-weight: 400;
+    color: #3d342f;
     line-height: 1;
-    margin-bottom: 0.25rem;
 }
 
 .stat-label {
-    font-size: 0.875rem;
-    color: #64748b;
+    font-size: 0.75rem;
+    color: #9e918a;
     font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
-/* Right Side: Image Wrapper Box */
+/* Right Side: Image Layout */
 .displayImg {
-    flex: 1;
+    flex: 0.9; /* Slightly smaller than text side to ground the layout */
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 }
 
 .displayImg img {
     width: 100%;
-    max-width: 520px;
+    max-width: 460px;
     height: auto;
-    object-fit: contain;
-    border-radius: 16px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    object-fit: cover;
+    border-radius: 4px; /* Crisp framing */
+    border: 1px solid #e8e1db; /* Framing line keeps it grounding */
+    padding: 0.75rem; /* Studio/gallery frame effect */
+    background: #ffffff;
+    box-shadow: 0 12px 30px rgba(61, 52, 47, 0.06); /* Highly understated, raw shadow */
 }
 
+/* Responsive adjustments that maintain the premium print-media look */
 @media (max-width: 1024px) {
     .hero-section {
-        flex-direction: column-reverse; /* Put content text above graphic layout on medium screens */
-        text-align: center;
-        gap: 3rem;
-        padding: 4rem 1.5rem;
+        flex-direction: column-reverse;
+        text-align: left; /* Kept left-aligned; center-aligned hero sections scream standard template */
+        gap: 4rem;
+        padding: 5rem 2rem;
     }
 
     .hero-content {
-        align-items: center;
+        align-items: flex-start;
     }
 
-    .hero-subtitle {
-        margin-left: auto;
-        margin-right: auto;
+    .displayImg {
+        justify-content: flex-start;
+        width: 100%;
     }
-
-    .hero-actions {
-        justify-content: center;
-    }
-
-    .displaydata {
-        justify-content: center;
-        gap: 3rem;
+    
+    .displayImg img {
+        max-width: 100%;
     }
 }
 
 @media (max-width: 640px) {
     .displayinfo h1 {
-        font-size: 2.25rem;
+        font-size: 2.75rem;
     }
 
     .hero-actions {
-        flex-direction: column; /* Stack primary/secondary buttons sequentially on narrow mobile screens */
+        flex-direction: column;
         width: 100%;
     }
 
     .btn-primary, .btn-secondary {
         width: 100%;
+        text-align: center;
     }
 
     .displaydata {
-        flex-direction: column;
-        gap: 1.5rem;
+        flex-direction: row; /* Keep stats side-by-side unless tiny, looks cleaner */
+        flex-wrap: wrap;
+        gap: 2rem;
     }
 }

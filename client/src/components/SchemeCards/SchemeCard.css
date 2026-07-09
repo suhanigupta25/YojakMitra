@@ -19,8 +19,6 @@
     gap: 1.5rem;
     width: 100%;
 }
-
-
 .displaycard {
     display: flex;
     flex-direction: column;
@@ -29,12 +27,14 @@
     border: 1px solid #e2e8f0; 
     border-radius: 12px; 
     padding: 1.5rem;
-    width: calc(33.333% - 1rem); 
-    min-width: 280px; 
+    
+    /* Lessened the footprint */
+    width: 100%;
+    max-width: 320px; /* Forces a neat, professional card width limit */
+    
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 .displaycard:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);

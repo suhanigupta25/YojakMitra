@@ -1,3 +1,4 @@
+import "./SearchEligibilty.css"
 
 const SearchEligibilty=()=>{
     return (
@@ -75,6 +76,9 @@ const SearchEligibilty=()=>{
             <div className="category-card">Startup</div>
             <div className="category-card">Education</div>
             <div className="category-card">Senior Citizen</div>
+            <div className="category-card">Transgender</div>
+            <div className="category-card">Finance</div>
+           
 
         </div>
 

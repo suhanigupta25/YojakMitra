@@ -1,0 +1,144 @@
+/* ==========================================================================
+   FOOTER BASE STRUCTURE
+   ========================================================================== */
+.site-footer {
+    width: 100%;
+    background-color: #ffffff;
+    border-top: 1px solid #eadfd6; /* Crisp warm nude line matching your layout */
+    padding-top: 4rem;
+    margin-top: 6rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.footer-container {
+    max-width: 880px; /* Snug width ceiling matching your compact widget wrapper */
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3rem;
+}
+
+/* ==========================================================================
+   LEFT COLUMN: Brand & Description
+   ========================================================================== */
+.footer-brand-section {
+    max-width: 320px;
+}
+
+.footer-logo {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #332a29; /* Deep charcoal clay signature code */
+    letter-spacing: -0.01em;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.footer-tagline {
+    font-size: 0.8rem;
+    color: #857871; /* Soft muted sand text */
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ==========================================================================
+   RIGHT COLUMN: Minimal Links Grid
+   ========================================================================== */
+.footer-links-grid {
+    display: flex;
+    gap: 4rem;
+}
+
+.footer-link-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.footer-link-group h4 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #4a3e3d;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.4rem 0;
+}
+
+.footer-link-group a {
+    font-size: 0.8rem;
+    color: #918379;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-link-group a:hover {
+    color: #4a3e3d; /* Smooth subtle contrast pop on hover */
+}
+
+/* ==========================================================================
+   BOTTOM METADATA BAR
+   ========================================================================== */
+.footer-bottom {
+    background-color: #faf8f5; /* Ultra clean linen background tint */
+    border-top: 1px solid #f5ede6;
+    padding: 1.25rem 0;
+}
+
+.footer-bottom-container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom p {
+    font-size: 0.75rem;
+    color: #a39594;
+    margin: 0;
+}
+
+/* Operational Status Dot setup */
+.footer-status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-status-indicator p {
+    font-size: 0.725rem;
+    color: #918379;
+}
+
+.status-ping {
+    width: 6px;
+    height: 6px;
+    background-color: #c4a484; /* matching warm tan color */
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* ==========================================================================
+   RESPONSIVE SCALING
+   ========================================================================== */
+@media (max-width: 640px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+    
+    .footer-links-grid {
+        gap: 3rem;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .footer-bottom-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+}

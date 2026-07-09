@@ -1,0 +1,242 @@
+/* Container Reset and Global Typography */
+.search-eligibility-page {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+    padding-bottom: 5rem;
+}
+
+/* Hero Section Split Layout (Text Left, Form Right) */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 500px;
+}
+
+.hero-content h1 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+    font-size: 1.125rem;
+    color: #475569;
+    line-height: 1.6;
+}
+
+/* Eligibility Checker Form Card */
+.eligibility-card {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 2.25rem;
+    max-width: 460px; /* Keep form width compact and professional */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+.eligibility-card h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 0 0 1.5rem 0;
+    color: #0f172a;
+}
+
+/* Form Groups and Inputs */
+.eligibility-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #475569;
+}
+
+.eligibility-form input,
+.eligibility-form select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    color: #0f172a;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+/* Input Focus States */
+.eligibility-form input:focus,
+.eligibility-form select:focus {
+    background-color: #ffffff;
+    border-color: #9e8576;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* CTA Button inside Card */
+.eligibility-form button[type="submit"] {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+    transition: all 0.2s ease;
+}
+
+.eligibility-form button[type="submit"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    filter: brightness(1.05);
+}
+
+/* Browse by Category Section */
+.browse-section {
+    max-width: 1200px;
+    margin: 3rem auto 0 auto;
+    padding: 0 2rem;
+}
+
+.browse-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1.5rem;
+}
+
+/* Category Cards Grid Layout - Center aligned and clean spacing */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 150px)); 
+    gap: 1.5rem;
+    justify-content: center; /* Centers the whole block if items don't fill the row */
+}
+
+/* Individual Premium Category Cards */
+.category-card {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Perfect, clean uniform squares */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    
+    /* Elegant off-white base with a ultra-subtle border tint */
+    background: #9e8576;
+    border: 1px solid #0f172a;
+    border-radius: 16px; /* Smooth modern rounded curves */
+    padding: 1.25rem;
+    box-sizing: border-box;
+    
+    /* Clean typographic settings */
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #334155; /* Soft dark slate */
+    text-align: center;
+    cursor: pointer;
+    
+    /* Smooth multi-property transition for beautiful feedback layers */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.01), 0 1px 2px rgba(15, 23, 42, 0.02);
+}
+
+/* Premium Hover & Interactive State */
+.category-card:hover {
+    color: #2563eb; /* Shifts text color to brand blue */
+    background: #ffffff;
+    border-color: #2563eb;
+    
+    /* Lifts card up and casts an elegant, wide blue ambient glow */
+    transform: translateY(-6px);
+    box-shadow: 0 12px 20px -8px rgba(37, 99, 235, 0.15), 
+                0 4px 12px -2px rgba(37, 99, 235, 0.05);
+}
+
+/* Decorative background circle inside each tile for a high-end UI layout */
+.category-card::before {
+    content: '';
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    background: #f1f5f9; /* Soft grey backdrop disk */
+    border-radius: 50%;
+    z-index: 1;
+    top: 20%; /* Pushes the accent circle up to sit behind where an icon would go */
+    transition: all 0.3s ease;
+}
+
+.category-card:hover::before {
+    background: #eff6ff; /* Changes disk to soft blue when hovered */
+    transform: scale(1.1);
+}
+
+/* Forces text content to sit layered safely on top of the accent circle layer */
+.category-card {
+    z-index: 2;
+}
+
+/* Make sure your plain text sits nicely inside the block below the circle layer */
+.category-card {
+    justify-content: flex-end; /* Pushes text label to lower portion cleanly */
+    padding-bottom: 1.25rem;
+}
+/* Responsive Web Layout Overrides */
+@media (max-width: 1024px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 3rem;
+        padding: 3rem 1.5rem;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .eligibility-card {
+        width: 100%;
+        max-width: 500px; /* Form centers out gracefully on tablet screens */
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-content h1 {
+        font-size: 2.25rem;
+    }
+    
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 balanced columns on tiny touch screens */
+    }
+}
