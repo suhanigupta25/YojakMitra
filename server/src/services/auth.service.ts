@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import User,{RegisteredUser} from "../models/user";
 
 interface TokenPayload {
-  username: string;
+  userId: string;
   email: string;
 }
 
@@ -39,6 +39,16 @@ export class AuthService {
         }
     }
 
+    public async getProfile(userId : string){
+        try{
+            const profileData=await User.findById(userId);
+            return profileData;
+        }
+        catch(error :any){
+            throw new Error("Unable to find profile");
+        }
+    }
+
     private hashPassword(password: string): Promise<string> {
         const saltRounds = 10;
         return bcrypt.hash(password, saltRounds);
@@ -70,7 +80,7 @@ export class AuthService {
             throw new Error("Invalid Credentials");
         }
         const payload: TokenPayload = {
-            username: existingUser.id,
+            userId: existingUser.id,
             email: existingUser.email
         };
 

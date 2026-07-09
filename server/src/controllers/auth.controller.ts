@@ -23,3 +23,13 @@ export async function signup(req: Request,res :Response){
         return res.status(400).json({message: error.message});
     }
 }
+
+export function getProfile(req :Request,res:Response){
+    try{
+        const userId=req.user.userId;
+        return authservice.getProfile(userId);
+    }
+    catch(error : any){
+        return res.status(401).json({message: "Unauthorized"});
+    }
+}
