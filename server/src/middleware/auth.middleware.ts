@@ -4,7 +4,7 @@ import {Response,Request} from "express";
 
 const authService= new AuthService();
 
-async function restrictToAuth(
+export async function restrictToAuth(
     req: Request,
     res: Response,
     next: NextFunction){
