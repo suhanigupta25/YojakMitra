@@ -1,8 +1,8 @@
-import { BrowseSchemeDTO, EligibilityDTO, SearchSchemeDTO } from "../dto/scheme.dto";
+import { BrowseSchemeDTO, EligibilityDTO, SearchSchemeDTO,SchemesDTO } from "../dto/scheme.dto";
 import scheme, { DisplaySchemes } from "../models/Scheme";
 
 export class SchemeService{
-    public async getSchemes(filter :BrowseSchemeDTO):Promise<DisplaySchemes[]>{
+    public async getSchemes(filter :BrowseSchemeDTO):Promise<SchemesDTO[]>{
         
         const query:BrowseSchemeDTO ={};
         if(filter.category){
@@ -12,12 +12,12 @@ export class SchemeService{
         return result;
     }
 
-    public async checkEligibility(query :EligibilityDTO):Promise<DisplaySchemes[]>{
+    public async checkEligibility(query :EligibilityDTO):Promise<SchemesDTO[]>{
         const result = await scheme.find(query);
         return result;
     }
 
-    public async searchSchemes(filter: SearchSchemeDTO): Promise<DisplaySchemes[]> {
+    public async searchSchemes(filter: SearchSchemeDTO): Promise<SchemesDTO[]> {
 
         const query: any = {};
         if (filter.search) {

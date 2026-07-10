@@ -4,7 +4,7 @@ export interface SchemesDTO{
         category: string;
         eligibility :string;
         documentsRequired:string;
-        state?:string;
+        state:string;
     
 }
 

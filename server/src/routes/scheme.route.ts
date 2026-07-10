@@ -11,4 +11,6 @@ router.post("/schemes/checkeligibilty",checkEligibilty);
 
 router.get("/schemes/:id",getSchemeById);
 
+router.get("/schemes/bookmark",);
+
 export default router;
