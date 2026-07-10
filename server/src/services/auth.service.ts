@@ -9,17 +9,22 @@ interface TokenPayload {
 
 interface Token{
   accessToken: string;
+  refreshToken :string;
 }
 
 export class AuthService {
   private readonly jwtSecret: string;
   private readonly jwtExpiresIn: string;
+  private readonly refreshSecret :string;
+  private readonly refreshExpiresIn :string;
 
   constructor() {
     this.jwtSecret = process.env.JWT_SECRET || '';
     this.jwtExpiresIn = process.env.JWT_EXPIRES_IN || '1h';
-   
-    if (!this.jwtSecret) {
+
+    this.refreshSecret = process.env.REFRESH_SECRET || "";
+    this.refreshExpiresIn = process.env.REFRESH_EXPIRES_IN || "7d";
+    if (!this.jwtSecret || this.refreshSecret) {
       throw new Error('JWT secrets must be defined in environment variables');
     }
   }
@@ -28,7 +33,10 @@ export class AuthService {
         const accessToken = jwt.sign(payload, this.jwtSecret, {
             expiresIn: this.jwtExpiresIn,
         });
-        return { accessToken};
+        const refreshToken = jwt.sign(payload, this.refreshSecret, {
+            expiresIn: this.refreshExpiresIn,
+        });
+        return { accessToken,refreshToken};
     }
 
     public verifyAccessToken(token: string): TokenPayload {
@@ -36,6 +44,13 @@ export class AuthService {
             return jwt.verify(token, this.jwtSecret) as TokenPayload;
         } catch (error) {
             throw new Error('Invalid or expired token');
+        }
+    }
+    public verifyRefreshToken(token: string): TokenPayload {
+        try {
+            return jwt.verify(token, this.refreshSecret) as TokenPayload;
+        } catch (error) {
+            throw new Error("Invalid or expired refresh token");
         }
     }
 

@@ -34,10 +34,8 @@ export const searchSchemes=async(req : Request,res:Response)=>{
 }
 
 export const getSchemeById = async (req: Request, res: Response) => {
-    const id = req.params.id;
-
+    const id = req.params.id as string;
     const result = await schemeservice.getSchemeById(id);
-
     if (!result) {
         return res.status(404).json({
             message: "Scheme not found"
