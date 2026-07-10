@@ -60,7 +60,7 @@ export class AuthService {
 
     async registerUser(userData :RegisteredUser){
         const existingUser=await User.findOne({username: userData.username});
-        if(existingUser){
+        if(!existingUser){
             throw new Error("Already registed");
         }
         else{

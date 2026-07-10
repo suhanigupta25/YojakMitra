@@ -5,7 +5,6 @@ export interface DisplaySchemes{
     description:string;
     category: string;
     eligibility :string;
-    benefits? :string;
     documentsRequired:string;
     state?:string;
 }
@@ -27,9 +26,6 @@ const schemeDetailSchema=new Schema<DisplaySchemes>(
         ,eligibility: {
             type: String,
             required: true,
-        },
-        benefits: {
-            type:String,
         },
         documentsRequired: {
             type:String,

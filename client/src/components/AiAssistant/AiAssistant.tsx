@@ -53,7 +53,7 @@ const AiAssistant = () => {
 
                 <div className="instruction-steps">
                     <div className="step-card">
-                        <div className="step-icon">💬</div>
+                        
                         <div className="step-info">
                             <h3>Ask Clear Doubts Directly</h3>
                             <p>Query specific scheme details like <em>"What documents do I need for PM-Kisan?"</em> or ask for direct translations of complex criteria.</p>
@@ -61,7 +61,7 @@ const AiAssistant = () => {
                     </div>
 
                     <div className="step-card">
-                        <div className="step-icon">🎯</div>
+                        
                         <div className="step-info">
                             <h3>Share Your Profile Context</h3>
                             <p>Mention details like your age, state, daily occupation, or income margin to get custom recommendations matched directly to you.</p>
@@ -69,7 +69,7 @@ const AiAssistant = () => {
                     </div>
 
                     <div className="step-card">
-                        <div className="step-icon">⚡</div>
+                        
                         <div className="step-info">
                             <h3>Understand Eligibility Instantly</h3>
                             <p>Our engine instantly interprets age limits, cross-state combinations, and threshold baselines so you save hours of research.</p>
