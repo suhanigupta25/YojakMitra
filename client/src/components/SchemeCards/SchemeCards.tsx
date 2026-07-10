@@ -1,5 +1,6 @@
 import "./SchemeCard.css"
 
+
 const SchemeCards =()=>{
     return (
     <div className="schemes-section">
