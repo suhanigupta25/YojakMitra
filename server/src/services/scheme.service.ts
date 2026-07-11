@@ -66,7 +66,7 @@ export class SchemeService{
         return result;
     }
 
-    
+
     public async getSchemeById(id: string): Promise<DisplaySchemes | null> {
         const result = await scheme.findById(id);
         return result;

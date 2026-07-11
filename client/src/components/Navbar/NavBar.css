@@ -1,140 +1,153 @@
-/* Sticky top navigation panel with subtle background blur */
+/* ==========================================================================
+   Navigation Bar Global Frame
+   ========================================================================== */
 .navbar {
+    width: 100%;
+    background-color: #faf7f2; /* Matches portal background perfectly */
+    border-bottom: 1px solid #e8e1db; /* Clean framing horizontal rule */
     position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(12px); /* Premium glassmorphism feel */
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(226, 232, 240, 0.8); /* Elegant separation line */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
-/* Internal layout wrapper for centering and alignment */
 .nav-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     max-width: 1200px;
-    height: 70px; /* Standard comfortable height */
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 1.25rem 2rem; /* Streamlined for a more professional height profile */
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Brand Identity Styling */
+/* ==========================================================================
+   Logo Masthead Type
+   ========================================================================== */
 .nav-logo {
     display: flex;
-    align-items: baseline;
+    align-items: center; /* Changed from baseline to stabilize cross-platform alignment */
     cursor: pointer;
+    user-select: none;
 }
 
 .nav-logo h2 {
-    font-size: 1.35rem;
-    font-weight: 800;
-    color: #0f172a; /* Slate 900 */
-    letter-spacing: -0.03em;
+    font-family: "Didot", "Bodoni MT", "Cinzel", "Georgia", serif;
+    font-size: 1.65rem;
+    font-weight: 400;
+    color: #3d342f;
     margin: 0;
+    letter-spacing: -0.02em;
+    line-height: 1;
 }
 
 .logo-dot {
-    color: #2563eb; /* Primary brand blue accents matching your theme */
-    font-size: 1.5rem;
-    font-weight: 900;
-    line-height: 0;
-    margin-left: 1px;
+    font-family: "Didot", "Bodoni MT", "Georgia", serif;
+    font-size: 1.65rem;
+    color: #a88a75; /* Accented earth tone */
+    margin-left: 0.1rem;
+    line-height: 1;
 }
 
-/* Navigation Links Row */
+/* ==========================================================================
+   Navigation Interface Links
+   ========================================================================== */
 .nav-links {
     display: flex;
     align-items: center;
+    gap: 3rem; /* Generous clean whitespace */
     list-style: none;
-    gap: 2.25rem;
     margin: 0;
     padding: 0;
 }
 
 .nav-item {
-    font-size: 0.95rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
     font-weight: 500;
-    color: #475569; /* Balanced charcoal gray */
+    color: #7a6e67;
     cursor: pointer;
     position: relative;
     padding: 0.5rem 0;
-    transition: color 0.2s ease;
+    transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Hover State effect with custom bottom line expansion */
 .nav-item:hover {
-    color: #2563eb;
+    color: #3d342f;
 }
 
+/* Fixed micro-underline anchor logic */
 .nav-item::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #2563eb;
-    transition: width 0.25s ease;
-}
-
-.nav-item:hover::after {
     width: 100%;
+    height: 1.5px;
+    background-color: #a88a75;
+    transform: scaleX(0);
+    transform-origin: right; /* Recedes beautifully to the right on leave */
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Highlighting the active/current page item */
 .nav-item.active {
-    color: #2563eb;
+    color: #3d342f;
     font-weight: 600;
 }
 
-.nav-item.active::after {
-    width: 100%;
+.nav-item.active::after,
+.nav-item:hover::after {
+    transform: scaleX(1);
+    transform-origin: left; /* Pulls from left on hover entry */
 }
 
-/* Navigation Right Call To Action Action */
-.nav-actions {
-    display: flex;
-    align-items: center;
-}
-
+/* ==========================================================================
+   Action Frame Components
+   ========================================================================== */
 .btn-login {
-    background-color: #0f172a; /* Deep contrast premium button color */
-    color: #ffffff;
-    font-size: 0.9rem;
-    font-weight: 600;
-    padding: 0.6rem 1.25rem;
-    border: none;
-    border-radius: 8px;
+    background: #3d342f; 
+    color: #faf7f2; 
+    border: 1px solid #3d342f;
+    border-radius: 2px; 
+    padding: 0.7rem 1.6rem; /* Cleaned proportions */
+    font-family: inherit;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-login:hover {
-    background-color: #1e293b;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+    background-color: #574a44; 
+    border-color: #574a44;
+    color: #faf7f2;
 }
 
-.btn-login:active {
-    transform: translateY(0);
+/* ==========================================================================
+   Viewport Adaptation
+   ========================================================================== */
+@media (max-width: 900px) {
+    .nav-links {
+        gap: 1.75rem; 
+    }
 }
 
-/* Responsive breakpoint layout for smaller displays */
 @media (max-width: 768px) {
     .nav-container {
-        height: 64px;
-        padding: 0 1.25rem;
+        padding: 1rem 1.5rem;
+    }
+
+    .nav-links {
+        display: none; /* Ready for mobile drawer link override hook */
     }
     
-    /* Hide desktop navigation link array on mobile screens */
-    /* You can hook this later into an interactive mobile hamburger menu drawer */
-    .nav-links {
-        display: none; 
+    .btn-login {
+        padding: 0.55rem 1.25rem;
+        font-size: 0.75rem;
     }
 }
