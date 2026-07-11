@@ -6,7 +6,7 @@ export async function connectDB(){
         console.log("database connected");
     }
     catch(error : any){
-        console.error("Database Connection failed");
+        console.error(error.message);
         process.exit(1);
     }
 };
