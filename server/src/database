@@ -1,0 +1,258 @@
+[
+  {
+    "name": "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)",
+    "description": "Central sector scheme providing income support of Rs. 6,000 per year to all landholding farmer families, paid in three equal installments of Rs. 2,000 every four months directly into bank accounts.",
+    "category": "Agriculture, Rural & Environment",
+    "eligibility": "All landholding farmer families, subject to certain exclusion criteria (income tax payers, institutional landholders, constitutional post holders, etc.)",
+    "documentsRequired": "Aadhaar card, land ownership/khasra-khatauni records, bank account passbook, citizenship certificate",
+    "state": "All India"
+  },
+  {
+    "name": "Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana (AB PM-JAY)",
+    "description": "World's largest health assurance scheme providing a health cover of Rs. 5 lakh per family per year for secondary and tertiary care hospitalization to poor and vulnerable families.",
+    "category": "Health & Wellness",
+    "eligibility": "Families identified based on deprivation and occupational criteria from the Socio-Economic Caste Census (SECC) 2011 database, both rural and urban",
+    "documentsRequired": "Aadhaar card, ration card, SECC verification letter, Ayushman card",
+    "state": "All India"
+  },
+  {
+    "name": "Pradhan Mantri Awas Yojana - Urban (PMAY-U)",
+    "description": "Mission to provide pucca houses with basic amenities to all eligible urban households/beneficiaries through central assistance to implementing agencies.",
+    "category": "Housing & Shelter",
+    "eligibility": "Economically Weaker Section (EWS), Low Income Group (LIG), and Middle Income Group (MIG) households without a pucca house anywhere in India",
+    "documentsRequired": "Aadhaar card, income certificate, bank account details, property documents (if any), affidavit of no pucca house",
+    "state": "All India"
+  },
+  {
+    "name": "Pradhan Mantri Awas Yojana - Gramin (PMAY-G)",
+    "description": "Provides financial assistance to rural households living in kutcha/dilapidated houses to construct pucca houses with basic amenities.",
+    "category": "Housing & Shelter",
+    "eligibility": "Houseless rural households and those living in kutcha/dilapidated houses as per the Socio-Economic Caste Census (SECC) 2011 data, verified through Gram Sabha",
+    "documentsRequired": "Aadhaar card, job card (MGNREGA) if available, bank account passbook, SECC/Awaas+ survey verification",
+    "state": "All India"
+  },
+  {
+    "name": "Sukanya Samriddhi Yojana",
+    "description": "Small savings scheme for the girl child that offers an attractive interest rate and tax benefits, encouraging parents to build a fund for a girl's education and marriage expenses.",
+    "category": "Banking, Financial Services & Insurance",
+    "eligibility": "Girl child below the age of 10 years; account can be opened by parents/legal guardian, maximum two accounts per family",
+    "documentsRequired": "Birth certificate of the girl child, identity/address proof of parent or guardian, passport-size photograph",
+    "state": "All India"
+  },
+  {
+    "name": "Pradhan Mantri Ujjwala Yojana (PMUY)",
+    "description": "Provides free LPG gas connections to women from Below Poverty Line (BPL) households to reduce dependence on unclean cooking fuels and improve health outcomes.",
+    "category": "Utility & Sanitation",
+    "eligibility": "Women aged 18 years or above belonging to BPL/eligible households as per SECC list, no existing LPG connection in the household",
+    "documentsRequired": "Aadhaar card, BPL ration card, bank account details, passport-size photograph, address proof",
+    "state": "All India"
+  },
+  {
+    "name": "Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA)",
+    "description": "Legal guarantee of at least 100 days of wage employment in a financial year to every rural household whose adult members volunteer to do unskilled manual work.",
+    "category": "Skills & Employment",
+    "eligibility": "Adult members (18+ years) of a rural household willing to do unskilled manual work, registered with local Gram Panchayat",
+    "documentsRequired": "Aadhaar card, job card application form, residence proof, passport-size photograph",
+    "state": "All India"
+  },
+  {
+    "name": "Beti Bachao Beti Padhao (BBBP)",
+    "description": "National campaign to address the declining child sex ratio and promote the education and empowerment of the girl child through awareness and multi-sectoral action.",
+    "category": "Social welfare & Empowerment",
+    "eligibility": "Focused on families and communities in gender-critical districts; benefits accrue to girl children and their families across India",
+    "documentsRequired": "Birth certificate, Aadhaar card of girl child and parents, school enrollment proof (for education-linked benefits)",
+    "state": "All India"
+  },
+  {
+    "name": "Atal Pension Yojana (APY)",
+    "description": "Guaranteed pension scheme for workers in the unorganized sector, offering a fixed monthly pension of Rs. 1,000 to Rs. 5,000 after the age of 60, based on contributions made.",
+    "category": "Banking, Financial Services & Insurance",
+    "eligibility": "Indian citizens aged between 18 and 40 years with a savings bank/post office account, not covered under any statutory social security scheme",
+    "documentsRequired": "Aadhaar card, bank account passbook, mobile number, nominee details",
+    "state": "All India"
+  },
+  {
+    "name": "Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY)",
+    "description": "Life insurance scheme offering a cover of Rs. 2 lakh in case of death of the insured due to any reason, at an affordable annual premium.",
+    "category": "Banking, Financial Services & Insurance",
+    "eligibility": "Individuals aged 18 to 50 years with a savings bank account, giving consent for auto-debit of premium",
+    "documentsRequired": "Aadhaar card, bank account details, nominee details, consent form",
+    "state": "All India"
+  },
+  {
+    "name": "Pradhan Mantri Suraksha Bima Yojana (PMSBY)",
+    "description": "Accident insurance scheme offering coverage of Rs. 2 lakh for accidental death and permanent total disability, and Rs. 1 lakh for permanent partial disability, at a low annual premium.",
+    "category": "Banking, Financial Services & Insurance",
+    "eligibility": "Individuals aged 18 to 70 years with a savings bank account, giving consent for auto-debit of premium",
+    "documentsRequired": "Aadhaar card, bank account details, nominee details, consent form",
+    "state": "All India"
+  },
+  {
+    "name": "Startup India Seed Fund Scheme",
+    "description": "Provides financial assistance to eligible startups for proof of concept, prototype development, product trials, market entry, and commercialization.",
+    "category": "Business & Entrepreneurship",
+    "eligibility": "DPIIT-recognized startups incorporated not more than 2 years ago, with a business idea for a product/service with market fit and scope of scaling",
+    "documentsRequired": "Certificate of incorporation, DPIIT recognition certificate, business plan/pitch deck, PAN card, bank account details",
+    "state": "All India"
+  },
+  {
+    "name": "Stand-Up India Scheme",
+    "description": "Facilitates bank loans between Rs. 10 lakh and Rs. 1 crore to at least one Scheduled Caste/Scheduled Tribe borrower and one woman borrower per bank branch for setting up a greenfield enterprise.",
+    "category": "Business & Entrepreneurship",
+    "eligibility": "SC/ST and/or women entrepreneurs above 18 years of age setting up a greenfield (first-time) enterprise in manufacturing, services, or trading",
+    "documentsRequired": "Identity and address proof, caste certificate (if applicable), business project report, PAN card, bank account details",
+    "state": "All India"
+  },
+  {
+    "name": "Pradhan Mantri Kaushal Vikas Yojana (PMKVY)",
+    "description": "Flagship skill development scheme offering free short-duration skill training and certification aligned to industry-recognized standards to improve employability of youth.",
+    "category": "Skills & Employment",
+    "eligibility": "Unemployed or school/college dropout Indian youth eligible for skill training and certification under recognized job roles",
+    "documentsRequired": "Aadhaar card, bank account details, educational qualification certificates, passport-size photograph",
+    "state": "All India"
+  },
+  {
+    "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+    "description": "Crop insurance scheme providing financial support to farmers in the event of crop failure due to natural calamities, pests, or diseases, at a low uniform premium.",
+    "category": "Agriculture, Rural & Environment",
+    "eligibility": "All farmers, including sharecroppers and tenant farmers, growing notified crops in notified areas",
+    "documentsRequired": "Aadhaar card, land records/tenancy agreement, bank account details, sowing certificate",
+    "state": "All India"
+  },
+  {
+    "name": "Kisan Credit Card (KCC) Scheme",
+    "description": "Provides farmers with timely access to credit for crop production, post-harvest expenses, and allied agricultural activities at concessional interest rates.",
+    "category": "Agriculture, Rural & Environment",
+    "eligibility": "Farmers who are owner cultivators, tenant farmers, sharecroppers, and members of Self-Help Groups or Joint Liability Groups",
+    "documentsRequired": "Aadhaar card, land ownership documents, passport-size photograph, bank account details",
+    "state": "All India"
+  },
+  {
+    "name": "PM Street Vendor's AtmaNirbhar Nidhi (PM SVANidhi)",
+    "description": "Provides collateral-free working capital loans up to Rs. 50,000 in three tranches to street vendors to resume their livelihoods affected by the COVID-19 lockdown.",
+    "category": "Business & Entrepreneurship",
+    "eligibility": "Street vendors in possession of a Certificate of Vending / Identity Card issued by Urban Local Bodies, or those identified in the ULB survey",
+    "documentsRequired": "Certificate of Vending/Identity Card, Aadhaar card, bank account details, mobile number",
+    "state": "All India"
+  },
+  {
+    "name": "e-Shram - National Database of Unorganised Workers",
+    "description": "Registration portal that creates a national database of unorganized workers, seeded with Aadhaar, to enable delivery of social security and welfare schemes.",
+    "category": "Skills & Employment",
+    "eligibility": "Unorganized sector workers aged 16 to 59 years, not a member of EPFO/ESIC, and not an income tax payer",
+    "documentsRequired": "Aadhaar card linked mobile number, bank account details",
+    "state": "All India"
+  },
+  {
+    "name": "Pradhan Mantri Matru Vandana Yojana (PMMVY)",
+    "description": "Maternity benefit programme providing cash incentive of Rs. 5,000 for the first living child to pregnant and lactating women to compensate for wage loss and improve health-seeking behavior.",
+    "category": "Health & Wellness",
+    "eligibility": "Pregnant and lactating women (except those in regular government/PSU employment) for their first living child",
+    "documentsRequired": "Aadhaar card, MCP (Mother and Child Protection) card, bank account passbook, marriage certificate (where applicable)",
+    "state": "All India"
+  },
+  {
+    "name": "National Scholarship Portal - Central Sector Scheme of Scholarships",
+    "description": "One-stop platform providing merit-based scholarships to meritorious students from low-income families to pursue higher education.",
+    "category": "Education & Learning",
+    "eligibility": "Students who have passed Class 12 with a minimum of 80th percentile in their respective board, family income below the prescribed threshold",
+    "documentsRequired": "Class 12 mark sheet, income certificate, Aadhaar card, bank account details, institution admission proof",
+    "state": "All India"
+  },
+  {
+    "name": "One Nation One Ration Card (ONORC)",
+    "description": "Enables migrant beneficiaries to access their entitled food grains from any Fair Price Shop across the country through a portable ration card linked to Aadhaar.",
+    "category": "Social welfare & Empowerment",
+    "eligibility": "Beneficiaries covered under the National Food Security Act holding a ration card seeded with Aadhaar",
+    "documentsRequired": "Ration card, Aadhaar card",
+    "state": "All India"
+  },
+  {
+    "name": "Rashtriya Vayoshri Yojana",
+    "description": "Provides senior citizens belonging to the BPL category with physical aids and assisted-living devices such as walking sticks, wheelchairs, and hearing aids, free of cost.",
+    "category": "Social welfare & Empowerment",
+    "eligibility": "Senior citizens (60 years and above) belonging to BPL households suffering from age-related disabilities",
+    "documentsRequired": "Aadhaar card, BPL certificate, age proof, medical certificate confirming disability",
+    "state": "All India"
+  },
+  {
+    "name": "Kanyashree Prakalpa",
+    "description": "State conditional cash transfer scheme aimed at improving the status of adolescent girls by incentivizing schooling and delaying marriage until age 18.",
+    "category": "Education & Learning",
+    "eligibility": "Unmarried girls aged 13 to 18 years enrolled in school/vocational education from families with annual income below the prescribed limit",
+    "documentsRequired": "Birth certificate, Aadhaar card, school enrollment certificate, bank account passbook, income certificate",
+    "state": "West Bengal"
+  },
+  {
+    "name": "Ladli Behna Yojana",
+    "description": "State scheme providing monthly financial assistance directly into the bank accounts of eligible women to improve their economic status and health.",
+    "category": "Social welfare & Empowerment",
+    "eligibility": "Married women (including widowed/divorced/deserted) aged 21 to 60 years, domicile of the state, from families not paying income tax",
+    "documentsRequired": "Aadhaar card, domicile certificate, bank account passbook (Aadhaar-linked), family income declaration",
+    "state": "Madhya Pradesh"
+  },
+  {
+    "name": "Rythu Bandhu",
+    "description": "Investment support scheme providing direct income support to farmers for crop investment, disbursed twice a year ahead of each cropping season.",
+    "category": "Agriculture, Rural & Environment",
+    "eligibility": "Landholding farmers as per land records of the state revenue department",
+    "documentsRequired": "Aadhaar card, land ownership (pattadar passbook) records, bank account details",
+    "state": "Telangana"
+  },
+  {
+    "name": "Krishak Bandhu",
+    "description": "State scheme offering assured income support to farmers per cropping season along with a one-time death benefit grant to the farmer's family in case of death during the crop growing age.",
+    "category": "Agriculture, Rural & Environment",
+    "eligibility": "Farmers and bargadars (sharecroppers) cultivating land within the state, aged 18 to 60 years for the death benefit component",
+    "documentsRequired": "Aadhaar card, land records/bargadar recorded receipt, bank account details",
+    "state": "West Bengal"
+  },
+  {
+    "name": "Amma Unavagam (Chief Minister's Canteen Scheme)",
+    "description": "Subsidized canteen scheme providing quality food at highly affordable prices to the urban poor and low-income groups.",
+    "category": "Social welfare & Empowerment",
+    "eligibility": "Open to all citizens; specifically targeted to benefit low-income and daily-wage urban populations",
+    "documentsRequired": "No documents required to avail meals at the canteen counters",
+    "state": "Tamil Nadu"
+  },
+  {
+    "name": "Mukhyamantri Majhi Ladki Bahin Yojana",
+    "description": "State scheme providing monthly financial assistance to eligible women to promote their financial independence, health, and nutrition.",
+    "category": "Social welfare & Empowerment",
+    "eligibility": "Married, widowed, divorced, or single women aged 21 to 65 years, domicile of the state, with annual family income below the prescribed limit",
+    "documentsRequired": "Aadhaar card, domicile certificate, income certificate, bank account passbook (Aadhaar-linked), passport-size photograph",
+    "state": "Maharashtra"
+  },
+  {
+    "name": "Anna Bhagya Scheme",
+    "description": "Food security scheme providing free rice to below poverty line households to ensure nutritional security for economically vulnerable families.",
+    "category": "Social welfare & Empowerment",
+    "eligibility": "Priority Household (PHH) and Antyodaya Anna Yojana (AAY) cardholders as per the state Public Distribution System",
+    "documentsRequired": "Ration card, Aadhaar card of family members",
+    "state": "Karnataka"
+  },
+  {
+    "name": "National Pension System (NPS)",
+    "description": "Voluntary, defined-contribution retirement savings scheme allowing subscribers to build a pension corpus through regulated market-linked investments.",
+    "category": "Banking, Financial Services & Insurance",
+    "eligibility": "Any Indian citizen (resident or NRI) aged between 18 and 70 years",
+    "documentsRequired": "Aadhaar/PAN card, bank account details, passport-size photograph, address proof",
+    "state": "All India"
+  },
+  {
+    "name": "Digital India Land Records Modernisation Programme (DILRMP)",
+    "description": "Computerizes land records, integrates textual and spatial data, and establishes a modern, comprehensive, and transparent land records management system.",
+    "category": "Transport & Infrastructure",
+    "eligibility": "Applicable to all landowners; benefits accrue to citizens seeking digitized land record services, mutation, and record verification",
+    "documentsRequired": "Aadhaar card, existing land record documents (khasra/khatauni/patta), property tax receipts",
+    "state": "All India"
+  },
+  {
+    "name": "PM Poshan (erstwhile Mid-Day Meal Scheme)",
+    "description": "Provides one hot cooked nutritious meal to children studying in government and government-aided schools to enhance enrolment, retention, and nutritional levels.",
+    "category": "Education & Learning",
+    "eligibility": "Children studying in Balvatika and Classes I to VIII in government and government-aided schools",
+    "documentsRequired": "School enrollment/admission proof",
+    "state": "All India"
+  }
+]

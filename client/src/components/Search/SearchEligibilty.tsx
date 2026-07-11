@@ -2,7 +2,8 @@ import { useState } from "react";
 import "./SearchEligibilty.css";
 
 interface Schemes{
-    title : string;
+    _id :string;          
+    name : string;
     description:string;
     category: string;
     eligibility :string;
@@ -11,11 +12,32 @@ interface Schemes{
 }
 
 const SearchEligibility = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+ 
   const [schemes, setSchemes] = useState<Schemes[]>([]);
+  const [FormData, setFormData] = useState({
+    age: "",
+    state: "",
+    occupation: "",
+    income: "",
+});
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const searchEligibility = async () => {
+    const result =await fetch(`http://localhost:5000/schemes/checkeligibilty`,{
+      method : "POST",
+              headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(FormData),
+    });
+
+    const schemeData = await result.json();
+    setSchemes(schemeData);
+    
+  }
+
+  const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
+    await searchEligibility();
   };
 
   return (
@@ -37,13 +59,25 @@ const SearchEligibility = () => {
               <input
                 id="age"
                 type="number"
+                value={FormData.age}
+                onChange={(e)=>setFormData({
+                  ...FormData,
+                  age: e.target.value
+                })}
                 placeholder="Enter age"
               />
             </div>
 
             <div className="form-group">
               <label htmlFor="state">State</label>
-              <select id="state">
+              <select id="state"
+              value={FormData.state}
+              onChange={
+                (e)=>setFormData({
+                  ...FormData,
+                  state :e.target.value
+                })
+              }>
                 <option value="">Select State</option>
                 <option value="delhi">Delhi</option>
                 <option value="maharashtra">Maharashtra</option>
@@ -76,6 +110,15 @@ const SearchEligibility = () => {
           </form>
         </div>
       </section>
+          <section>
+
+              {schemes.map((scheme) => (
+                  <div key={scheme._id}>
+                      {scheme.name}
+                  </div>
+              ))}
+
+          </section>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import "./SchemeCard.css"
+import "./RecentScheme.css"
 
 
 const SchemeCards =()=>{

@@ -1,5 +1,5 @@
 import "./SearchEligibilty.css"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Schemes{
     _id :string
@@ -20,6 +20,16 @@ const SearchCategory=()=>{
         const data = await res.json();
         setSchemes(data);
     };
+
+    const browseAnything = async( search : string)=>{
+      const result= await fetch(`http://localhost:5000/schemes/search=${search}`);
+      const data = await result.json();
+      setSchemes(data);
+    }
+
+    useEffect(() => {
+        browseAnything(searchQuery);
+    }, [searchQuery]);
   
     return (
     <div>
@@ -33,16 +43,17 @@ const SearchCategory=()=>{
             </svg>
           </span>
           <input
+            
             type="text"
             placeholder="Search for specific schemes directly (e.g., PM-Kisan, Startup India)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            
             className="scheme-search-bar"
           />
         </div>
       </section>
 
-      {/* Directory Categories Grid */}
       <section className="browse-section">
         <h2>Browse by Category</h2>
         <div className="category-grid">
@@ -54,6 +65,8 @@ const SearchCategory=()=>{
           <div className="category-card" onClick={()=>browseCategory("Education")}>Education</div>
           <div className="category-card" onClick={()=>browseCategory("Senior Citizen")}>Senior Citizen</div>
           <div className="category-card" onClick={()=>browseCategory("Finance")}>Finance</div>
+          <div className="category-card" onClick={()=>browseCategory("Sports")}>Sports</div>
+          <div className="category-card" onClick={()=>browseCategory("Travel")}>Travel</div>
         </div>
       </section>
 
