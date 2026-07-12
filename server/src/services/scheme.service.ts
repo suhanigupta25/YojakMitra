@@ -8,7 +8,9 @@ export class SchemeService{
         if(filter.category){
             query.category=filter.category;
         }
+        console.log(query);
         const result=await scheme.find(query);
+        console.log(result);
         return result;
     }
 
@@ -62,6 +64,7 @@ export class SchemeService{
             ];
 
         }
+        console.log(query);
         const result = await scheme.find(query);
         return result;
     }

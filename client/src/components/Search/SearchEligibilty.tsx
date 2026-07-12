@@ -4,10 +4,13 @@ import "./SearchEligibilty.css";
 interface Schemes{
     _id :string;          
     name : string;
+    age :string;
     description:string;
     category: string;
     eligibility :string;
     documentsRequired:string;
+    incomeLimit: string;
+    gender: string;
     state:string;
 }
 
@@ -18,7 +21,7 @@ const SearchEligibility = () => {
     age: "",
     state: "",
     occupation: "",
-    income: "",
+    gender:""
 });
 
   const searchEligibility = async () => {
@@ -99,12 +102,14 @@ const SearchEligibility = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="income">Annual Income</label>
-              <input
-                id="income"
-                type="number"
-                placeholder="Annual Income"
-              />
+              <label htmlFor="gender">Gender</label>
+                <select id="gender">
+                <option value="">Select Gender</option>
+                <option value="open">Open</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+                <option value="prefernottosay">Prefer not to say</option>
+              </select>
             </div>
 
             <button type="submit">

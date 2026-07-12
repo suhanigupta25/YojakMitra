@@ -17,8 +17,8 @@ export const BrowseCategory=async(req : Request,res:Response)=>{
 export const checkEligibilty=async(req : Request,res:  Response)=>{
     const filter : EligibilityDTO={
         occupation: req.query.occupation as string,
-        age: Number(req.query.age as string),
-        income: Number(req.query.income as string),
+        age: req.query.age as string,
+        gender: req.query.gender as string,
         state: req.query.state as string
     };
     const result=await schemeservice.checkEligibility(filter);

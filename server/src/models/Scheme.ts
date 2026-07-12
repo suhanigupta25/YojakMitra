@@ -1,16 +1,20 @@
 import {Schema,model} from "mongoose";
 
 export interface DisplaySchemes{
-    title : string;
-    description:string;
-    category: string;
-    eligibility :string;
-    documentsRequired:string;
-    state:string;
+        name : string;
+        description:string;
+        category: string;
+        eligibility :string;
+        documentsRequired:string;
+        state:string;
+        occupation:string,
+        age: string;
+        gender:string ;
+        incomeLimit:string; 
 }
 const schemeDetailSchema=new Schema<DisplaySchemes>(
     {
-        title: {
+        name: {
            type: String,
             required: true 
         },
@@ -34,9 +38,26 @@ const schemeDetailSchema=new Schema<DisplaySchemes>(
         },
         state: {
             type:String                       
-        }
+        },
+        incomeLimit: {
+           type: String,
+            required: true 
+        },
+        occupation: {
+           type: String,
+            required: true 
+        },
+        gender: {
+           type: String,
+            required: true 
+        },
+        age: {
+           type: String,
+            required: true 
+        },
     }
 );
+
 
 const scheme=model<DisplaySchemes>("scheme",schemeDetailSchema);
 

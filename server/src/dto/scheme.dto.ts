@@ -1,11 +1,14 @@
 export interface SchemesDTO{    
-        title : string;
+        name : string;
         description:string;
         category: string;
         eligibility :string;
         documentsRequired:string;
         state:string;
-    
+        occupation:string,
+        age: string;
+        gender:string ;
+        incomeLimit:string;   
 }
 
 
@@ -19,7 +22,7 @@ export interface SearchSchemeDTO {
 
 export interface EligibilityDTO {
     occupation: string;
-    age: number;
-    income: number;
+    age: string;
+    gender:string;
     state: string;
 }

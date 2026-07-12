@@ -19,8 +19,9 @@ const SearchCategory=()=>{
     const [schemes, setSchemes] = useState<Schemes[]>([]);
 
     const browseCategory = async (category: string) => {
-        const res = await fetch(`http://localhost:5000/schemes?category=${category}`);
+        const res = await fetch(`http://localhost:5000/schemes?category=${encodeURIComponent(category)}`);
         const data = await res.json();
+        console.log(data);
         setSchemes(data);
     };
 
