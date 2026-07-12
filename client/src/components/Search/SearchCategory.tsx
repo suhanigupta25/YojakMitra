@@ -1,14 +1,17 @@
 import "./SearchEligibilty.css"
 import { useEffect, useState } from "react";
 
-interface Schemes{
-    _id :string
-    name : string;
-    description:string;
-    category: string;
-    eligibility :string;
-    documentsRequired:string;
-    state:string;
+interface Schemes {
+  _id :string;
+  name: string;
+  description: string;
+  category: string;
+  eligibility: string;
+  documentsRequired: string;
+  state: string;
+  gender: string;
+  ageLimit: string;    // e.g. "18-40 years", "60+ years", "No age limit"
+  incomeLimit: string; // e.g. "No income limit", "<₹2.5L/year"
 }
 
 const SearchCategory=()=>{
@@ -22,7 +25,7 @@ const SearchCategory=()=>{
     };
 
     const browseAnything = async( search : string)=>{
-      const result= await fetch(`http://localhost:5000/schemes/search=${search}`);
+      const result= await fetch(`http://localhost:5000/schemes/search?search=${search}`);
       const data = await result.json();
       setSchemes(data);
     }
@@ -56,19 +59,19 @@ const SearchCategory=()=>{
 
       <section className="browse-section">
         <h2>Browse by Category</h2>
-        <div className="category-grid">
-          <div className="category-card" onClick={()=>browseCategory("Healthcare")}>Healthcare</div>
-          <div className="category-card" onClick={()=>browseCategory("Agriculture")}>Agriculture</div>
-          <div className="category-card" onClick={()=>browseCategory("Housing")}>Housing</div>
-          <div className="category-card" onClick={()=>browseCategory("Employment")}>Employment</div>
-          <div className="category-card" onClick={()=>browseCategory("Startup")}>Startup</div>
-          <div className="category-card" onClick={()=>browseCategory("Education")}>Education</div>
-          <div className="category-card" onClick={()=>browseCategory("Senior Citizen")}>Senior Citizen</div>
-          <div className="category-card" onClick={()=>browseCategory("Finance")}>Finance</div>
-          <div className="category-card" onClick={()=>browseCategory("Sports")}>Sports</div>
-          <div className="category-card" onClick={()=>browseCategory("Travel")}>Travel</div>
-        </div>
-      </section>
+          <div className="category-grid">
+            <div className="category-card" onClick={() => browseCategory("Agriculture, Rural & Environment")}>Agriculture, Rural & Environment</div>
+            <div className="category-card" onClick={() => browseCategory("Banking, Financial Services & Insurance")}>Banking, Financial Services & Insurance</div>
+            <div className="category-card" onClick={() => browseCategory("Business & Entrepreneurship")}>Business & Entrepreneurship</div>
+            <div className="category-card" onClick={() => browseCategory("Education & Learning")}>Education & Learning</div>
+            <div className="category-card" onClick={() => browseCategory("Health & Wellness")}>Health & Wellness</div>
+            <div className="category-card" onClick={() => browseCategory("Housing & Shelter")}>Housing & Shelter</div>
+            <div className="category-card" onClick={() => browseCategory("Skills & Employment")}>Skills & Employment</div>
+            <div className="category-card" onClick={() => browseCategory("Social welfare & Empowerment")}>Social welfare & Empowerment</div>
+            <div className="category-card" onClick={() => browseCategory("Transport & Infrastructure")}>Transport & Infrastructure</div>
+            <div className="category-card" onClick={() => browseCategory("Utility & Sanitation")}>Utility & Sanitation</div>
+          </div>
+        </section>
 
           <section>
 

@@ -77,11 +77,14 @@ const SearchEligibility = () => {
                   ...FormData,
                   state :e.target.value
                 })
-              }>
-                <option value="">Select State</option>
-                <option value="delhi">Delhi</option>
-                <option value="maharashtra">Maharashtra</option>
+                }>
+                <option value="all-india">All India</option>
                 <option value="karnataka">Karnataka</option>
+                <option value="madhya-pradesh">Madhya Pradesh</option>
+                <option value="maharashtra">Maharashtra</option>
+                <option value="tamil-nadu">Tamil Nadu</option>
+                <option value="telangana">Telangana</option>
+                <option value="west-bengal">West Bengal</option>
               </select>
             </div>
 

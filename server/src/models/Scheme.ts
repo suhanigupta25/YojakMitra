@@ -38,5 +38,8 @@ const schemeDetailSchema=new Schema<DisplaySchemes>(
     }
 );
 
-const scheme=model<DisplaySchemes>("Scheme",schemeDetailSchema);
+const scheme=model<DisplaySchemes>("scheme",schemeDetailSchema);
+
+
+
 export default scheme;

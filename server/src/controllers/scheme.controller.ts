@@ -9,6 +9,7 @@ export const BrowseCategory=async(req : Request,res:Response)=>{
     const filter: BrowseSchemeDTO = {
         category: req.query.category as string
     };
+    console.log(req.query.category);
     const result=await schemeservice.getSchemes(filter);
     res.status(200).json(result);
 }
@@ -29,6 +30,7 @@ export const searchSchemes=async(req : Request,res:Response)=>{
     const filter : SearchSchemeDTO={
         search : req.query.search as string
     }
+    console.log(req.query.search);
     const result =await schemeservice.searchSchemes(filter);
     res.status(200).json(result);
 }
