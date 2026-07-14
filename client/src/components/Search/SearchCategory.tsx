@@ -10,8 +10,8 @@ interface Schemes {
   documentsRequired: string;
   state: string;
   gender: string;
-  ageLimit: string;    // e.g. "18-40 years", "60+ years", "No age limit"
-  incomeLimit: string; // e.g. "No income limit", "<₹2.5L/year"
+  age: string;    
+  incomeLimit: string;
 }
 
 const SearchCategory=()=>{
@@ -19,6 +19,7 @@ const SearchCategory=()=>{
     const [schemes, setSchemes] = useState<Schemes[]>([]);
 
     const browseCategory = async (category: string) => {
+        console.log(category);
         const res = await fetch(`http://localhost:5000/schemes?category=${encodeURIComponent(category)}`);
         const data = await res.json();
         console.log(data);
@@ -81,7 +82,7 @@ const SearchCategory=()=>{
                       {scheme.name}
                   </div>
               ))}
-
+              
           </section>
         </div>
     );

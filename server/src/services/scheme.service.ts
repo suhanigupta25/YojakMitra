@@ -4,12 +4,12 @@ import scheme, { DisplaySchemes } from "../models/Scheme";
 export class SchemeService{
     public async getSchemes(filter :BrowseSchemeDTO):Promise<SchemesDTO[]>{
         
-        const query:BrowseSchemeDTO ={};
+        const query:Partial<BrowseSchemeDTO> ={};
         if(filter.category){
             query.category=filter.category;
         }
         console.log(query);
-        const result=await scheme.find(query);
+        const result=await scheme.find(query); //breakpoint
         console.log(result);
         return result;
     }

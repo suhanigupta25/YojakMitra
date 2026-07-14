@@ -13,7 +13,7 @@ export interface SchemesDTO{
 
 
 export interface BrowseSchemeDTO {
-    category?: string;
+    category: string;
 }
 
 export interface SearchSchemeDTO {
