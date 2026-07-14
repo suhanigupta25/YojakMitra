@@ -61,7 +61,7 @@ const SearchEligibility = () => {
               <label htmlFor="age">Age</label>
               <input
                 id="age"
-                type="number"
+                type="string"
                 value={FormData.age}
                 onChange={(e)=>setFormData({
                   ...FormData,

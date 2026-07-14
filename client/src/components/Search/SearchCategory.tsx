@@ -1,4 +1,4 @@
-import "./SearchEligibilty.css"
+import "./SearchCategory.css"
 import { useEffect, useState } from "react";
 
 interface Schemes {
@@ -53,7 +53,7 @@ const SearchCategory=()=>{
             placeholder="Search for specific schemes directly (e.g., PM-Kisan, Startup India)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            
+
             className="scheme-search-bar"
           />
         </div>
@@ -61,31 +61,50 @@ const SearchCategory=()=>{
 
       <section className="browse-section">
         <h2>Browse by Category</h2>
-          <div className="category-grid">
-            <div className="category-card" onClick={() => browseCategory("Agriculture, Rural & Environment")}>Agriculture, Rural & Environment</div>
-            <div className="category-card" onClick={() => browseCategory("Banking, Financial Services & Insurance")}>Banking, Financial Services & Insurance</div>
-            <div className="category-card" onClick={() => browseCategory("Business & Entrepreneurship")}>Business & Entrepreneurship</div>
-            <div className="category-card" onClick={() => browseCategory("Education & Learning")}>Education & Learning</div>
-            <div className="category-card" onClick={() => browseCategory("Health & Wellness")}>Health & Wellness</div>
-            <div className="category-card" onClick={() => browseCategory("Housing & Shelter")}>Housing & Shelter</div>
-            <div className="category-card" onClick={() => browseCategory("Skills & Employment")}>Skills & Employment</div>
-            <div className="category-card" onClick={() => browseCategory("Social welfare & Empowerment")}>Social welfare & Empowerment</div>
-            <div className="category-card" onClick={() => browseCategory("Transport & Infrastructure")}>Transport & Infrastructure</div>
-            <div className="category-card" onClick={() => browseCategory("Utility & Sanitation")}>Utility & Sanitation</div>
-          </div>
-        </section>
-
-          <section>
-
-              {schemes.map((scheme) => (
-                  <div key={scheme._id}>
-                      {scheme.name}
-                  </div>
-              ))}
-              
-          </section>
+        <div className="category-grid">
+          <div className="category-card" onClick={() => browseCategory("Agriculture, Rural & Environment")}>Agriculture, Rural & Environment</div>
+          <div className="category-card" onClick={() => browseCategory("Banking, Financial Services & Insurance")}>Banking, Financial Services & Insurance</div>
+          <div className="category-card" onClick={() => browseCategory("Business & Entrepreneurship")}>Business & Entrepreneurship</div>
+          <div className="category-card" onClick={() => browseCategory("Education & Learning")}>Education & Learning</div>
+          <div className="category-card" onClick={() => browseCategory("Health & Wellness")}>Health & Wellness</div>
+          <div className="category-card" onClick={() => browseCategory("Housing & Shelter")}>Housing & Shelter</div>
+          <div className="category-card" onClick={() => browseCategory("Skills & Employment")}>Skills & Employment</div>
+          <div className="category-card" onClick={() => browseCategory("Social welfare & Empowerment")}>Social welfare & Empowerment</div>
+          <div className="category-card" onClick={() => browseCategory("Transport & Infrastructure")}>Transport & Infrastructure</div>
+          <div className="category-card" onClick={() => browseCategory("Utility & Sanitation")}>Utility & Sanitation</div>
         </div>
-    );
+      </section>
+
+      <section className="results-section">
+        {schemes.length > 0 && <h2 className="section-title">Available Matches</h2>}
+
+        <div className="results-grid">
+          {schemes.map((scheme) => (
+            <div key={scheme._id} className="scheme-displaycard">
+              <div className="scheme-title-group">
+                <span className="scheme-category-badge">{scheme.category}</span>
+                <h3>{scheme.name}</h3>
+              </div>
+
+              <p className="scheme-description">{scheme.description}</p>
+
+              <div className="scheme-details">
+                <div className="detail-row"><b>Eligibility:</b> {scheme.eligibility}</div>
+                <div className="detail-row"><b>Required Documents:</b> {scheme.documentsRequired}</div>
+
+                <div className="scheme-meta-tags">
+                  {scheme.age && <span className="meta-pill">Age: {scheme.age}</span>}
+                  {scheme.gender && <span className="meta-pill">{scheme.gender}</span>}
+                  {scheme.incomeLimit && <span className="meta-pill">Limit: {scheme.incomeLimit}</span>}
+                  {scheme.state && <span className="meta-pill">{scheme.state}</span>}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
 }
 
 export default SearchCategory;

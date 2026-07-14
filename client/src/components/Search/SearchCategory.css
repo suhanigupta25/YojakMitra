@@ -1,0 +1,219 @@
+/* ==========================================================================
+   Base Layout & Alignment Frame
+   ========================================================================== */
+.search-section, 
+.browse-section,
+.results-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    box-sizing: border-box;
+    background-color: #faf7f2; /* Continuous signature canvas */
+}
+
+.search-section {
+    padding-top: 5rem;
+}
+
+.search-section h2,
+.browse-section h2,
+.results-section h2.section-title {
+    font-family: "Didot", "Bodoni MT", "Cinzel", "Georgia", serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #3d342f;
+    margin: 0 0 1.5rem 0;
+    letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   Minimalist Integrated Search Interface
+   ========================================================================== */
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #e8e1db;
+    border-radius: 4px;
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 10px 30px rgba(61, 52, 47, 0.015);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.search-container:focus-within {
+    border-color: #a88a75;
+    box-shadow: 0 15px 40px rgba(61, 52, 47, 0.03);
+}
+
+.search-icon {
+    color: #7a6e67;
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.scheme-search-bar {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 1.05rem;
+    color: #3d342f;
+    padding: 0.75rem 0;
+    background: transparent;
+}
+
+.scheme-search-bar::placeholder {
+    color: #b5aba4;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   Fine-Line Category Filter Grid
+   ========================================================================== */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.category-card {
+    background-color: #ffffff;
+    border: 1px solid #e8e1db;
+    border-radius: 3px;
+    padding: 1.25rem;
+    font-size: 0.85rem;
+    color: #5a4f47;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.category-card:hover {
+    border-color: #a88a75;
+    background-color: #fcfbfa;
+    color: #3d342f;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Dynamic Scheme Results Grid
+   ========================================================================== */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.scheme-displaycard {
+    background-color: #ffffff;
+    border: 1px solid #e8e1db;
+    border-radius: 4px;
+    padding: 2.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scheme-displaycard:hover {
+    border-color: #a88a75;
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(61, 52, 47, 0.04);
+}
+
+.scheme-title-group h3 {
+    font-family: "Didot", "Bodoni MT", "Georgia", serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: #3d342f;
+    line-height: 1.3;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.01em;
+}
+
+.scheme-category-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #a88a75;
+    margin-bottom: 1.25rem;
+}
+
+.scheme-description {
+    font-size: 0.95rem;
+    color: #7a6e67;
+    line-height: 1.6;
+    font-weight: 300;
+    margin: 0 0 1.5rem 0;
+}
+
+/* Eligibility Technical Metric Section */
+.scheme-details {
+    border-top: 1px solid #f3ede6;
+    padding-top: 1.25rem;
+    margin-top: auto;
+}
+
+.detail-row {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #5a4f47;
+    margin-bottom: 0.5rem;
+}
+
+.detail-row b {
+    color: #3d342f;
+    font-weight: 500;
+}
+
+/* Horizontal Metadata Layout Pills */
+.scheme-meta-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1.25rem;
+}
+
+.meta-pill {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.5rem;
+    border-radius: 2px;
+    background-color: #f7f4ef;
+    color: #8c7b70;
+    border: 1px solid #ebd9cb;
+}
+
+/* ==========================================================================
+   Viewport Adaptations
+   ========================================================================== */
+@media (max-width: 768px) {
+    .search-section {
+        padding-top: 3rem;
+    }
+    
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .scheme-displaycard {
+        padding: 1.75rem;
+        min-height: auto;
+    }
+}
