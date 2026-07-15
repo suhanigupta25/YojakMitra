@@ -1,7 +1,7 @@
 import SchemeDetails from "../SchemeDetails/SchemeDetails";
 import "./SearchCategory.css";
 import { useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom";
+import {useNavigate,BrowserRouter} from "react-router-dom";
 
 
 interface Schemes {

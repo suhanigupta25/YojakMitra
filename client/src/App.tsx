@@ -1,4 +1,3 @@
-
 import './App.css'
 import SchemeCards from './components/RecentScheme/RecentScheme';
 import SearchEligibilty from './components/Search/SearchEligibilty'
@@ -7,25 +6,36 @@ import Hero from './components/Hero/Hero';
 import AiAssistant from './components/AiAssistant/AiAssistant';
 import Footer from './components/Footer/Footer';
 import SearchCategory from './components/Search/SearchCategory';
-import { Route, Routes } from 'react-router-dom';
 import SchemeDetails from './components/SchemeDetails/SchemeDetails';
+import { Route, BrowserRouter, Routes } from 'react-router-dom'; 
 
-function App() {
-   return (
+const Home = () => {
+  return (
     <div>
       <Navbar/>
-      <Hero/>
-      <SchemeCards/>
-      <SearchEligibilty/>
-      <SearchCategory/>
-      <Routes>
-        <Route path="/" element={<SearchCategory />} />
-        <Route path="/schemes/:id" element={<SchemeDetails />} />
-      </Routes>
+      <Hero />
+      <SchemeCards />
+      <SearchEligibilty />
+      <SearchCategory />          
       <AiAssistant/>
-      <Footer/>
     </div>
+  );
+};
+
+function App() {
+  return (
+    <BrowserRouter>
+      <div>                
+        <Routes>
+          <Route path="/" element={<Home />} />
+          
+          <Route path="/schemes/:id" element={<SchemeDetails />} />
+        </Routes>
+
+        <Footer/>
+      </div>
+    </BrowserRouter>
   );
 }
 
-export default App
+export default App;
