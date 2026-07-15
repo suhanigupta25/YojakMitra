@@ -12,7 +12,6 @@ import { Route, BrowserRouter, Routes } from 'react-router-dom';
 const Home = () => {
   return (
     <div>
-      <Navbar/>
       <Hero />
       <SchemeCards />
       <SearchEligibilty />
@@ -25,7 +24,9 @@ const Home = () => {
 function App() {
   return (
     <BrowserRouter>
-      <div>                
+      <div>
+       <Navbar/>
+                
         <Routes>
           <Route path="/" element={<Home />} />
           

@@ -1,7 +1,6 @@
-import SchemeDetails from "../SchemeDetails/SchemeDetails";
 import "./SearchCategory.css";
 import { useEffect, useState } from "react";
-import {useNavigate,BrowserRouter} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 interface Schemes {
@@ -35,8 +34,13 @@ const SearchCategory = () => {
   };
 
   useEffect(() => {
-    browseAnything(searchQuery);
-  }, [searchQuery]);
+  if (!searchQuery.trim()) {
+    setSchemes([]);
+    return;
+  }
+
+  browseAnything(searchQuery);
+}, [searchQuery]);
 
   return (
     <div className="search-category-page">
@@ -75,8 +79,9 @@ const SearchCategory = () => {
         </div>
       </section>
 
+      {schemes.length > 0 &&(
       <section className="results-section">
-        {schemes.length > 0 && <h2 className="section-title">Available Schemes</h2>}
+         <h2 className="section-title">Available Schemes</h2>
         <div className="results-grid">
           {schemes.map((scheme) => (
             <div 
@@ -92,6 +97,8 @@ const SearchCategory = () => {
           ))}
         </div>
       </section>
+      )}
+      
     </div>
   );
 };
