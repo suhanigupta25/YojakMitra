@@ -1,8 +1,11 @@
-import "./SearchCategory.css"
+import SchemeDetails from "../SchemeDetails/SchemeDetails";
+import "./SearchCategory.css";
 import { useEffect, useState } from "react";
+import {useNavigate} from "react-router-dom";
+
 
 interface Schemes {
-  _id :string;
+  _id: string;
   name: string;
   description: string;
   category: string;
@@ -14,31 +17,30 @@ interface Schemes {
   incomeLimit: string;
 }
 
-const SearchCategory=()=>{
-   const [searchQuery, setSearchQuery] = useState("");
-    const [schemes, setSchemes] = useState<Schemes[]>([]);
+const SearchCategory = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [schemes, setSchemes] = useState<Schemes[]>([]);
+  const navigate=useNavigate();
 
-    const browseCategory = async (category: string) => {
-        console.log(category);
-        const res = await fetch(`http://localhost:5000/schemes?category=${encodeURIComponent(category)}`);
-        const data = await res.json();
-        console.log(data);
-        setSchemes(data);
-    };
+  const browseCategory = async (category: string) => {
+    const res = await fetch(`http://localhost:5000/schemes?category=${encodeURIComponent(category)}`);
+    const data = await res.json();
+    setSchemes(data);
+  };
 
-    const browseAnything = async( search : string)=>{
-      const result= await fetch(`http://localhost:5000/schemes/search?search=${search}`);
-      const data = await result.json();
-      setSchemes(data);
-    }
+  const browseAnything = async (search: string) => {
+    const result = await fetch(`http://localhost:5000/schemes/search?search=${search}`);
+    const data = await result.json();
+    setSchemes(data);
+  };
 
-    useEffect(() => {
-        browseAnything(searchQuery);
-    }, [searchQuery]);
-  
-    return (
-    <div>
-          <section className="search-section">
+  useEffect(() => {
+    browseAnything(searchQuery);
+  }, [searchQuery]);
+
+  return (
+    <div className="search-category-page">
+      <section className="search-section">
         <h2>Search For Scheme</h2>
         <div className="search-container">
           <span className="search-icon">
@@ -48,12 +50,10 @@ const SearchCategory=()=>{
             </svg>
           </span>
           <input
-            
             type="text"
             placeholder="Search for specific schemes directly (e.g., PM-Kisan, Startup India)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-
             className="scheme-search-bar"
           />
         </div>
@@ -76,35 +76,24 @@ const SearchCategory=()=>{
       </section>
 
       <section className="results-section">
-        {schemes.length > 0 && <h2 className="section-title">Available Matches</h2>}
-
+        {schemes.length > 0 && <h2 className="section-title">Available Schemes</h2>}
         <div className="results-grid">
           {schemes.map((scheme) => (
-            <div key={scheme._id} className="scheme-displaycard">
-              <div className="scheme-title-group">
-                <span className="scheme-category-badge">{scheme.category}</span>
-                <h3>{scheme.name}</h3>
-              </div>
-
-              <p className="scheme-description">{scheme.description}</p>
-
-              <div className="scheme-details">
-                <div className="detail-row"><b>Eligibility:</b> {scheme.eligibility}</div>
-                <div className="detail-row"><b>Required Documents:</b> {scheme.documentsRequired}</div>
-
-                <div className="scheme-meta-tags">
-                  {scheme.age && <span className="meta-pill">Age: {scheme.age}</span>}
-                  {scheme.gender && <span className="meta-pill">{scheme.gender}</span>}
-                  {scheme.incomeLimit && <span className="meta-pill">Limit: {scheme.incomeLimit}</span>}
-                  {scheme.state && <span className="meta-pill">{scheme.state}</span>}
-                </div>
-              </div>
+            <div 
+              key={scheme._id} 
+              className="preview-card"
+              onClick={() => {
+                navigate(`/schemes/${scheme._id}`)}}
+            >
+              <h3>{scheme.name}</h3>
+              <p className="preview-description">{scheme.description}</p>
+              <span className="view-more-link">View Details →</span>
             </div>
           ))}
         </div>
       </section>
     </div>
   );
-}
+};
 
 export default SearchCategory;

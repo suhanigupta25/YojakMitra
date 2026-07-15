@@ -1,6 +1,11 @@
 /* ==========================================================================
-   Base Layout & Alignment Frame
+   Base Structure
    ========================================================================== */
+.search-category-page {
+    background-color: #faf7f2;
+    min-height: 100vh;
+}
+
 .search-section, 
 .browse-section,
 .results-section {
@@ -8,18 +13,17 @@
     margin: 0 auto;
     padding: 2rem;
     box-sizing: border-box;
-    background-color: #faf7f2; /* Continuous signature canvas */
 }
 
 .search-section {
-    padding-top: 5rem;
+    padding-top: 4rem;
 }
 
 .search-section h2,
 .browse-section h2,
-.results-section h2.section-title {
+.results-section .section-title {
     font-family: "Didot", "Bodoni MT", "Cinzel", "Georgia", serif;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 400;
     color: #3d342f;
     margin: 0 0 1.5rem 0;
@@ -27,7 +31,7 @@
 }
 
 /* ==========================================================================
-   Minimalist Integrated Search Interface
+   Search Input Layout
    ========================================================================== */
 .search-container {
     display: flex;
@@ -65,17 +69,15 @@
 
 .scheme-search-bar::placeholder {
     color: #b5aba4;
-    font-weight: 300;
 }
 
 /* ==========================================================================
-   Fine-Line Category Filter Grid
+   Category Selection Grid
    ========================================================================== */
 .category-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 1rem;
-    margin-top: 1.5rem;
 }
 
 .category-card {
@@ -102,7 +104,7 @@
 }
 
 /* ==========================================================================
-   Dynamic Scheme Results Grid
+   Clean Master List Preview Cards (Clickable)
    ========================================================================== */
 .results-grid {
     display: grid;
@@ -111,109 +113,299 @@
     margin-top: 2rem;
 }
 
-.scheme-displaycard {
+.preview-card {
     background-color: #ffffff;
     border: 1px solid #e8e1db;
     border-radius: 4px;
     padding: 2.25rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-height: 320px;
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.scheme-displaycard:hover {
-    border-color: #a88a75;
-    transform: translateY(-4px);
-    box-shadow: 0 15px 35px rgba(61, 52, 47, 0.04);
-}
-
-.scheme-title-group h3 {
+.preview-card h3 {
     font-family: "Didot", "Bodoni MT", "Georgia", serif;
     font-size: 1.35rem;
     font-weight: 400;
     color: #3d342f;
+    margin: 0 0 1rem 0;
     line-height: 1.3;
-    margin: 0 0 0.5rem 0;
-    letter-spacing: -0.01em;
 }
 
-.scheme-category-badge {
-    display: inline-block;
-    font-size: 0.65rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #a88a75;
-    margin-bottom: 1.25rem;
-}
-
-.scheme-description {
+.preview-description {
     font-size: 0.95rem;
     color: #7a6e67;
     line-height: 1.6;
     font-weight: 300;
-    margin: 0 0 1.5rem 0;
+    margin-bottom: 2rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Truncates long text gracefully at 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-/* Eligibility Technical Metric Section */
-.scheme-details {
-    border-top: 1px solid #f3ede6;
-    padding-top: 1.25rem;
+.view-more-link {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    color: #a88a75;
     margin-top: auto;
+    transition: color 0.2s ease;
 }
 
-.detail-row {
+.preview-card:hover {
+    border-color: #a88a75;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(61, 52, 47, 0.04);
+}
+
+.preview-card:hover .view-more-link {
+    color: #3d342f;
+}
+
+/* ==========================================================================
+   Dedicated Detail Page Layout
+   ========================================================================== */
+.scheme-detail-page {
+    background-color: #faf7f2;
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    box-sizing: border-box;
+}
+
+.detail-header-nav {
+    max-width: 900px;
+    margin: 0 auto 3rem auto;
+}
+
+.btn-back {
+    background: transparent;
+    border: none;
+    font-family: inherit;
     font-size: 0.85rem;
-    line-height: 1.5;
-    color: #5a4f47;
-    margin-bottom: 0.5rem;
+    color: #7a6e67;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    transition: color 0.2s ease;
 }
 
-.detail-row b {
+.btn-back:hover {
+    color: #3d342f;
+}
+
+.detail-content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border: 1px solid #e8e1db;
+    border-radius: 4px;
+    padding: 4rem;
+    box-shadow: 0 15px 45px rgba(61, 52, 47, 0.02);
+}
+
+.detail-category {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #a88a75;
+    font-weight: 600;
+}
+
+.detail-title {
+    font-family: "Didot", "Bodoni MT", "Cinzel", "Georgia", serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #3d342f;
+    margin: 0.75rem 0 2rem 0;
+    line-height: 1.2;
+}
+
+.detail-long-description {
+    font-size: 1.1rem;
+    color: #5a4f47;
+    line-height: 1.7;
+    font-weight: 300;
+    border-bottom: 1px solid #e8e1db;
+    padding-bottom: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.detail-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+/* Spans the demographics list fully across the columns */
+.detail-info-grid .detail-card:nth-child(3) {
+    grid-column: span 2;
+}
+
+.detail-card h4 {
+    font-family: "Didot", "Bodoni MT", "Georgia", serif;
+    font-size: 1.25rem;
+    color: #3d342f;
+    font-weight: 400;
+    margin: 0 0 1rem 0;
+}
+
+.detail-card p {
+    font-size: 0.95rem;
+    color: #7a6e67;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Demographics Specs Structure */
+.specs-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    background-color: #fcfbfa;
+    border: 1px solid #f3ede6;
+    padding: 1.5rem;
+    border-radius: 3px;
+}
+
+.spec-item {
+    font-size: 0.9rem;
+    color: #7a6e67;
+}
+
+.spec-item strong {
     color: #3d342f;
     font-weight: 500;
 }
 
-/* Horizontal Metadata Layout Pills */
-.scheme-meta-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 1.25rem;
-}
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 768px) {
+    .detail-content-wrapper {
+        padding: 2rem;
+    }
 
-.meta-pill {
-    font-size: 0.65rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0.25rem 0.5rem;
-    border-radius: 2px;
-    background-color: #f7f4ef;
-    color: #8c7b70;
-    border: 1px solid #ebd9cb;
+    .detail-title {
+        font-size: 1.85rem;
+    }
+
+    .detail-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-info-grid .detail-card:nth-child(3) {
+        grid-column: span 1;
+    }
+
+    .specs-list {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ==========================================================================
-   Viewport Adaptations
+   Comparison Interaction Zone & Matrix Styles
    ========================================================================== */
-@media (max-width: 768px) {
-    .search-section {
-        padding-top: 3rem;
-    }
-    
-    .category-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .results-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .scheme-displaycard {
-        padding: 1.75rem;
-        min-height: auto;
-    }
+.comparison-trigger-zone {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px dashed #ebd9cb;
+    text-align: center;
+}
+
+.comparison-trigger-zone h3 {
+    font-family: "Didot", "Bodoni MT", "Georgia", serif;
+    font-size: 1.4rem;
+    color: #3d342f;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.comparison-trigger-zone p {
+    font-size: 0.95rem;
+    color: #7a6e67;
+    margin-bottom: 1.5rem;
+}
+
+.btn-compare-trigger {
+    background-color: #3d342f;
+    color: #faf7f2;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-compare-trigger:hover {
+    background-color: #a88a75;
+}
+
+/* Scrollable matrix frame for high density columns */
+.comparison-table-wrapper {
+    margin-top: 3rem;
+    overflow-x: auto;
+    border: 1px solid #e8e1db;
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+
+.comparison-matrix {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.comparison-matrix th, 
+.comparison-matrix td {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #e8e1db;
+    border-right: 1px solid #f3ede6;
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+.comparison-matrix th {
+    background-color: #fcfbfa;
+    font-family: "Didot", "Bodoni MT", "Georgia", serif;
+    font-size: 1.1rem;
+    color: #3d342f;
+    font-weight: 400;
+}
+
+/* Highlights the current active column context */
+.comparison-matrix th.current-scheme-th {
+    background-color: #f7f4ef;
+    font-weight: 600;
+    border-bottom: 2px solid #a88a75;
+}
+
+.comparison-matrix tr:last-child td {
+    border-bottom: none;
+}
+
+.comparison-matrix td:first-child {
+    background-color: #fcfbfa;
+    color: #3d342f;
+    font-weight: 500;
+    white-space: nowrap;
+    width: 200px;
+}
+
+.loading-state, .error-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    font-family: "Didot", serif;
+    color: #7a6e67;
+    font-size: 1.2rem;
 }
