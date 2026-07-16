@@ -1,0 +1,168 @@
+/* ==========================================================================
+   YojnaMitra AI - Nude Professional Espresso Theme (No :root variables)
+   ========================================================================== */
+
+/* Base Container Styling */
+.ai-minimal-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5efe6; /* Elegant warm nude base */
+  padding: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #2d1e18; /* Deep rich coffee brown */
+}
+
+/* Wrapper Card - Setup as a Flexbox Column to lock the form to the bottom */
+.ai-minimal-wrapper {
+  background-color: #fdfbf7; /* Soft cream */
+  width: 100%;
+  max-width: 680px;
+  height: 600px; /* Fixed height to allow bottom positioning */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes header to top, form to bottom */
+  border-radius: 16px;
+  border: 1px solid #ebdccb; /* Gentle tan */
+  box-shadow: 0 10px 30px rgba(74, 53, 42, 0.06);
+  padding: 32px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Minimal Header Masthead (Top) */
+.ai-minimal-header {
+  margin-bottom: 24px;
+}
+
+.ai-minimal-header h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #2d1e18;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+}
+
+.ai-minimal-header p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #4a352a; /* Muted warm brown */
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* Void Area (Middle) - Takes up the remaining space dynamically */
+.ai-minimal-void {
+  flex-grow: 1;
+}
+
+/* Integrated Input Base Interface (Bottom) */
+.ai-minimal-input-form {
+  margin-top: auto; /* Ensures form is anchored to the bottom */
+  width: 100%;
+}
+
+.ai-input-container {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #ebdccb;
+  border-radius: 10px;
+  padding: 6px 6px 6px 16px;
+  box-shadow: 0 4px 12px rgba(74, 53, 42, 0.03);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ai-input-container:focus-within {
+  border-color: #2d1e18;
+  box-shadow: 0 0 0 3px rgba(45, 30, 24, 0.08);
+}
+
+/* Text Input Styling */
+.ai-input-container input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.95rem;
+  color: #2d1e18;
+  padding: 8px 0;
+}
+
+.ai-input-container input::placeholder {
+  color: #a38f80; /* Warm taupe */
+  opacity: 0.8;
+}
+
+/* Button Styling */
+.btn-ai-submit {
+  background-color: #2d1e18;
+  color: #fdfbf7;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-ai-submit:hover {
+  background-color: #4a352a;
+  transform: translateY(-1px);
+}
+
+.btn-ai-submit:active {
+  transform: translateY(1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .ai-minimal-wrapper {
+    height: 100vh;
+    border-radius: 0;
+    border: none;
+    padding: 20px;
+  }
+}
+
+/* Dynamic Chat History Container inside the void area */
+.chat-history-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Chat Bubbles */
+.chat-bubble {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.chat-bubble.user {
+  align-self: flex-end;
+  background-color: #2d1e18; /* Espresso dark for user */
+  color: #fdfbf7;
+  border-bottom-right-radius: 2px;
+}
+
+.chat-bubble.ai {
+  align-self: flex-start;
+  background-color: #ebdccb; /* Soft tan for AI */
+  color: #2d1e18;
+  border-bottom-left-radius: 2px;
+}
+
+.chat-bubble.typing-indicator {
+  opacity: 0.6;
+  font-style: italic;
+}

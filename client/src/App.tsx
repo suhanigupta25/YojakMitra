@@ -33,7 +33,7 @@ function App() {
           <Route path="/" element={<Home />} />
           
           <Route path="/schemes/:id" element={<SchemeDetails />} />
-          <Route path="/aiasistant" element={<AiChatbot />} />
+          <Route path="/aiassistant" element={<AiChatbot />} />
           <Route path="/about" element={<AboutUs />} />
           
         </Routes>
