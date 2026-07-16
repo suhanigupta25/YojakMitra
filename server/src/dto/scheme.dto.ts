@@ -21,8 +21,8 @@ export interface SearchSchemeDTO {
 }
 
 export interface EligibilityDTO {
-    occupation: string;
-    age: string;
-    gender:string;
-    state: string;
+    occupation?: string;
+    age?: string;
+    gender?:string;
+    state?: string;
 }
