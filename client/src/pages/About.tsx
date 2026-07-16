@@ -1,5 +1,5 @@
 import React from 'react';
-import './Aboutus.css'; // Importing the corresponding stylesheet
+import './About.css'; // Importing the corresponding stylesheet
 
 interface FeatureCardProps {
   icon: React.ReactNode;

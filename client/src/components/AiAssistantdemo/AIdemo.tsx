@@ -1,4 +1,4 @@
-import "./AiAssistant.css"
+import "./AIdemo.css"
 
 const AiAssistant = () => {
     return (

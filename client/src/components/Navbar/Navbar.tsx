@@ -1,6 +1,10 @@
 import "./NavBar.css";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+    
+    const navigate=useNavigate();
+
     return (
         <nav className="navbar">
             <div className="nav-container">
@@ -10,10 +14,10 @@ const Navbar = () => {
                 </div>
 
                 <ul className="nav-links">
-                    <li className="nav-item active">Home</li>
-                    <li className="nav-item">Explore Schemes</li>
-                    <li className="nav-item">AI Assistant</li>
-                    <li className="nav-item">About</li>
+                    <NavLink to="/" className="nav-item">Home</NavLink>
+                    <li className="nav-item" >Explore Schemes</li>
+                    <NavLink to="/aiassistant" className="nav-item">AI Assistant</NavLink>
+                    <NavLink to="/about" className="nav-item">About</NavLink>
                 </ul>
 
                 <div className="nav-actions">

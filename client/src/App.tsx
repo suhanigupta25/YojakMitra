@@ -3,11 +3,13 @@ import SchemeCards from './components/RecentScheme/RecentScheme';
 import SearchEligibilty from './components/Search/SearchEligibilty'
 import Navbar from './components/Navbar/NavBar';
 import Hero from './components/Hero/Hero';
-import AiAssistant from './components/AiAssistant/AiAssistant';
+import AiAssistant from './components/AiAssistantdemo/AIdemo';
 import Footer from './components/Footer/Footer';
 import SearchCategory from './components/Search/SearchCategory';
 import SchemeDetails from './components/SchemeDetails/SchemeDetails';
 import { Route, BrowserRouter, Routes } from 'react-router-dom'; 
+import AboutUs from './pages/About';
+import AiChatbot from './pages/AiChatbot';
 
 const Home = () => {
   return (
@@ -31,6 +33,9 @@ function App() {
           <Route path="/" element={<Home />} />
           
           <Route path="/schemes/:id" element={<SchemeDetails />} />
+          <Route path="/aiasistant" element={<AiChatbot />} />
+          <Route path="/about" element={<AboutUs />} />
+          
         </Routes>
 
         <Footer/>
