@@ -10,6 +10,7 @@ import SchemeDetails from './components/SchemeDetails/SchemeDetails';
 import { Route, BrowserRouter, Routes } from 'react-router-dom'; 
 import AboutUs from './pages/About';
 import AiChatbot from './pages/AiChatbot';
+import ExploreSchemes from './pages/ExploreScheme';
 
 const Home = () => {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/" element={<Home />} />
           
           <Route path="/schemes/:id" element={<SchemeDetails />} />
+          <Route path="/explore" element={<ExploreSchemes />} />
           <Route path="/aiassistant" element={<AiChatbot />} />
           <Route path="/about" element={<AboutUs />} />
           

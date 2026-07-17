@@ -1,5 +1,5 @@
 import "./SearchCategory.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {useNavigate} from "react-router-dom";
 
 
@@ -17,7 +17,6 @@ interface Schemes {
 }
 
 const SearchCategory = () => {
-  const [searchQuery, setSearchQuery] = useState("");
   const [schemes, setSchemes] = useState<Schemes[]>([]);
   const navigate=useNavigate();
 
@@ -27,42 +26,11 @@ const SearchCategory = () => {
     setSchemes(data);
   };
 
-  const browseAnything = async (search: string) => {
-    const result = await fetch(`http://localhost:5000/schemes/search?search=${search}`);
-    const data = await result.json();
-    setSchemes(data);
-  };
 
-  useEffect(() => {
-  if (!searchQuery.trim()) {
-    setSchemes([]);
-    return;
-  }
-
-  browseAnything(searchQuery);
-}, [searchQuery]);
 
   return (
     <div className="search-category-page">
-      <section className="search-section">
-        <h2>Search For Scheme</h2>
-        <div className="search-container">
-          <span className="search-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </span>
-          <input
-            type="text"
-            placeholder="Search for specific schemes directly (e.g., PM-Kisan, Startup India)..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="scheme-search-bar"
-          />
-        </div>
-      </section>
-
+     
       <section className="browse-section">
         <h2>Browse by Category</h2>
         <div className="category-grid">
