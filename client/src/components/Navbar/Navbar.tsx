@@ -22,7 +22,10 @@ const Navbar = () => {
                 </ul>
 
                 <div className="nav-actions">
-                    <button className="btn-login">Login / Register</button>
+                    <button className="btn-login"
+                    onClick={()=>{
+                        navigate("./login")
+                    }}>Login / Register</button>
                 </div>
             </div>
         </nav>

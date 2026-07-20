@@ -6,7 +6,7 @@ interface LoginUserDTO{
     password: string;
 }
 
-export const LoginPage: React.FC = () => {
+export const LoginPage = () => {
   const [formData, setFormData] = useState<LoginUserDTO>({
     username: '',
     password: '',
@@ -25,7 +25,7 @@ export const LoginPage: React.FC = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch('/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -37,12 +37,9 @@ export const LoginPage: React.FC = () => {
         throw new Error(data.message || 'Login failed. Please check your credentials.');
       }
 
-      // Handle your Access & Refresh JWT Tokens securely
       localStorage.setItem('refreshToken', data.refreshToken);
-      // Tip: Access tokens are best kept in memory or application state context
       sessionStorage.setItem('accessToken', data.accessToken); 
 
-      // Redirect user to dashboard / search screen
       window.location.href = '/search';
     } catch (err: any) {
       setError(err.message || 'Something went wrong.');
