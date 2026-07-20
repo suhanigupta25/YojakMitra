@@ -75,7 +75,7 @@ export const SignupPage: React.FC = () => {
               required
               value={formData.name}
               onChange={handleInputChange}
-              placeholder="John Doe"
+              placeholder="Jiya Desai"
             />
           </div>
 
@@ -124,7 +124,7 @@ export const SignupPage: React.FC = () => {
               required
               value={formData.username}
               onChange={handleInputChange}
-              placeholder="johndoe12"
+              placeholder="jiya15438"
             />
           </div>
 

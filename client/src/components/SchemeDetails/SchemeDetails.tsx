@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "../Search/SearchCategory.css";
+import "./SchemeDetails.css";
 
 interface Scheme {
   _id: string;
@@ -63,7 +63,6 @@ const SchemeDetailPage = () => {
       }
     };
 
-    // Reset comparison state when navigating to a different scheme
     setSelectedIds([]);
     setComparison(null);
     setCompareError("");

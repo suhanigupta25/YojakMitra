@@ -43,8 +43,12 @@ export const LoginPage = () => {
       sessionStorage.setItem('accessToken', data.accessToken); 
 
       navigate('/');
-    } catch (err: any) {
-      setError(err.message || 'Something went wrong.');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
     } finally {
       setLoading(false);
     }

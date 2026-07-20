@@ -18,9 +18,11 @@ app.get("/", (req, res) => {
 app.use(router);
 
 if (!process.env.GEMINI_API_KEY) {
-    console.error("GEMINI_API_KEY is not set. /aiassistant will fail.");
+    console.error("CRITICAL: GEMINI_API_KEY is not set. /aiassistant endpoints will fail.");
 }
+
 const aiClient = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const escapeRegex = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 app.post("/aiassistant", async (req, res) => {
     const { message } = req.body;
@@ -30,56 +32,70 @@ app.post("/aiassistant", async (req, res) => {
     }
 
     try {
-        const keywords = message.split(/\s+/).filter((w) => w.length > 3).slice(0, 6);
-        const relevantSchemes = keywords.length
-            ? await scheme
-                  .find({
-                      $or: keywords.map((k) => ({
-                          $or: [
-                              { name: { $regex: k, $options: "i" } },
-                              { description: { $regex: k, $options: "i" } },
-                              { category: { $regex: k, $options: "i" } },
-                          ],
-                      })),
-                  })
-                  .limit(15)
-            : await scheme.find().limit(15);
-
-        const schemeContext = relevantSchemes
-            .map(
-                (s: any) =>
-                    `- ${s.name} | Category: ${s.category} | Eligibility: ${s.eligibility} | Age: ${s.age} | Gender: ${s.gender} | Income Limit: ${s.incomeLimit} | State: ${s.state}`
+        const keywords = Array.from(
+            new Set(
+                message
+                    .toLowerCase()
+                    .split(/\s+/)
+                    .filter((w) => w.length > 3)
             )
-            .join("\n");
+        ).slice(0, 6);
+
+        let relevantSchemes = [];
+
+        if (keywords.length > 0) {
+            // Match any scheme where ANY keyword hits name, description, or category
+            const searchConditions = keywords.flatMap((k) => {
+                const safeKeyword = escapeRegex(k);
+                return [
+                    { name: { $regex: safeKeyword, $options: "i" } },
+                    { description: { $regex: safeKeyword, $options: "i" } },
+                    { category: { $regex: safeKeyword, $options: "i" } },
+                ];
+            });
+
+            relevantSchemes = await scheme.find({ $or: searchConditions }).limit(15);
+        } else {
+            relevantSchemes = await scheme.find().limit(15);
+        }
+
+        const schemeContext = relevantSchemes.length
+            ? relevantSchemes
+                  .map(
+                      (s: any) =>
+                          `- ${s.name} | Category: ${s.category || "N/A"} | Eligibility: ${s.eligibility || "N/A"} | Age: ${s.age || "N/A"} | Gender: ${s.gender || "N/A"} | Income Limit: ${s.incomeLimit || "N/A"} | State: ${s.state || "N/A"}`
+                  )
+                  .join("\n")
+            : "No matching schemes found in the database.";
 
         const response = await aiClient.models.generateContent({
-            model: "gemini-2.5-flash",
+            model: "gemini-2.0-flash", // Correct model name
             contents: message,
             config: {
                 maxOutputTokens: 800,
                 systemInstruction: `
-                    You are YojnaMitra AI, a government schemes advisor.
-                    Only recommend schemes from the list below — never invent a scheme name or detail
-                    that isn't in this list. If nothing in the list fits the user's situation, say so
-                    plainly instead of guessing.
+You are YojnaMitra AI, an expert advisor for Indian government schemes.
 
-                        Available schemes:
-                        ${schemeContext || "No matching schemes found in the database."}
+Strict Rules:
+1. ONLY recommend schemes listed under "Available schemes" below.
+2. NEVER invent, extrapolate, or mention scheme names/details outside this provided context.
+3. If no matching or suitable schemes are in the list, state clearly: "I couldn't find any directly matching schemes in our database based on your details."
+4. Evaluate the user's situation against eligibility criteria (Age, Gender, Income, State).
 
-                        Evaluate the user's profile, regional context, and financial situation, and
-                        recommend from the list above. Be professional, encouraging, clear, and direct.
-                                        `,
+Available schemes:
+${schemeContext}
+                `,
             },
         });
 
         res.json({ reply: response.text });
     } catch (error) {
         console.error("AI Generation Error:", error);
-        res.status(500).json({ error: "Failed to generate content from AI pipeline" });
+        res.status(500).json({ error: "Failed to generate AI recommendation." });
     }
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Secure AI Backend runner live on port ${PORT}`));
+app.listen(PORT, () => console.log(`YojnaMitra AI Backend running on port ${PORT}`));
 
 export default app;
