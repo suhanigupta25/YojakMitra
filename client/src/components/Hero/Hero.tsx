@@ -34,10 +34,6 @@ const Hero = () => {
                 </div>
             </div>
 
-            <div className="displayImg">
-                {/* Replace src with your actual image path or vector graphic */}
-                <img src="/hero-dashboard.png" alt="YojnaMitra AI Dashboard Simulation" />
-            </div>
         </section>
     );
 }

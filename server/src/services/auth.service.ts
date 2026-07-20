@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+import jwt, { Secret, SignOptions } from "jsonwebtoken";
 import User,{RegisteredUser} from "../models/user";
 
 interface TokenPayload {
@@ -13,20 +13,23 @@ interface Token{
 }
 
 export class AuthService {
-  private readonly jwtSecret: string;
-  private readonly jwtExpiresIn: string;
-  private readonly refreshSecret :string;
-  private readonly refreshExpiresIn :string;
+  private readonly jwtSecret: Secret;
+  private readonly jwtExpiresIn: SignOptions['expiresIn'];
+  private readonly refreshSecret :Secret;
+  private readonly refreshExpiresIn :SignOptions['expiresIn'];
 
   constructor() {
-    this.jwtSecret = process.env.JWT_SECRET || '';
-    this.jwtExpiresIn = process.env.JWT_EXPIRES_IN || '1h';
-
-    this.refreshSecret = process.env.REFRESH_SECRET || "";
-    this.refreshExpiresIn = process.env.REFRESH_EXPIRES_IN || "7d";
-    if (!this.jwtSecret || this.refreshSecret) {
+    const jwtSecretEnv = process.env.JWT_SECRET;
+    const refreshSecretEnv = process.env.REFRESH_SECRET;
+   
+    if (!jwtSecretEnv || !refreshSecretEnv) {
       throw new Error('JWT secrets must be defined in environment variables');
     }
+    this.jwtSecret = jwtSecretEnv;
+    this.refreshSecret = refreshSecretEnv;
+
+    this.jwtExpiresIn = (process.env.JWT_EXPIRES_IN || '1h') as SignOptions['expiresIn'];
+    this.refreshExpiresIn = (process.env.REFRESH_EXPIRES_IN || '7d') as SignOptions['expiresIn'];
   }
 
     private generateTokens(payload: TokenPayload): Token{
@@ -84,7 +87,7 @@ export class AuthService {
         }
     }
 
-    async loginUser(username: string, password:string){
+    async loginUser(username: string, password:string):Promise<Token>{
         const existingUser=await User.findOne({username});
         if(!existingUser){
             throw new Error("Invalid Credentials");

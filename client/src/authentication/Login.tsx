@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import './AuthPages.css';
 
 interface LoginUserDTO{
@@ -7,6 +8,7 @@ interface LoginUserDTO{
 }
 
 export const LoginPage = () => {
+  const navigate =useNavigate();
   const [formData, setFormData] = useState<LoginUserDTO>({
     username: '',
     password: '',
@@ -25,7 +27,7 @@ export const LoginPage = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('/login', {
+      const response = await fetch('http://localhost:5000/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -40,7 +42,7 @@ export const LoginPage = () => {
       localStorage.setItem('refreshToken', data.refreshToken);
       sessionStorage.setItem('accessToken', data.accessToken); 
 
-      window.location.href = '/search';
+      navigate('/');
     } catch (err: any) {
       setError(err.message || 'Something went wrong.');
     } finally {
@@ -94,7 +96,7 @@ export const LoginPage = () => {
 
         <div className="auth-footer">
           Don't have an account?{' '}
-          <a href="/signup" className="auth-link">Create one here</a>
+          <Link to="/signup" className="auth-link">Create one here</Link>
         </div>
       </div>
     </div>
