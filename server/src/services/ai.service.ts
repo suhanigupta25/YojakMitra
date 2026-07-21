@@ -37,7 +37,7 @@ export class AiService {
       : "No matching schemes found in the database.";
 
     const response = await aiClient.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.1-flash-lite",
       contents: message,
       config: {
         maxOutputTokens: 800,
@@ -58,7 +58,7 @@ export class AiService {
       .join("\n\n");
 
     const response = await aiClient.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.1-flash-lite",
       contents: `Compare these government schemes objectively:\n\n${comparisonContext}`,
       config: {
         responseMimeType: "application/json",

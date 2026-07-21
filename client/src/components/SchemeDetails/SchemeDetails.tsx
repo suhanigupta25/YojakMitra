@@ -15,14 +15,13 @@ interface Scheme {
   state: string;
 }
 
-interface ComparisonRow {
-  criterion: string;
-  values: Record<string, string>;
+interface ComparisonCriterion {
+  feature: string;
+  values: string[];
 }
 
 interface ComparisonResult {
-  schemes: string[];
-  rows: ComparisonRow[];
+  criteria: ComparisonCriterion[];
   recommendation: string;
 }
 
@@ -85,24 +84,13 @@ const SchemeDetailPage = () => {
     setComparing(true);
     setCompareError("");
     setComparison(null);
-
-    const selectedSchemes = relatedSchemes.filter((s) => selectedIds.includes(s._id));
-    const payload = [scheme, ...selectedSchemes].map((s) => ({
-      name: s.name,
-      eligibility: s.eligibility,
-      incomeLimit: s.incomeLimit,
-      age: s.age,
-      gender: s.gender,
-      state: s.state,
-      documentsRequired: s.documentsRequired,
-      description: s.description,
-    }));
+    const payloadIds = [scheme._id, ...selectedIds];
 
     try {
       const res = await fetch("http://localhost:5000/schemes/compare", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ schemes: payload }),
+        body: JSON.stringify({ schemeIds: payloadIds }), 
       });
 
       if (!res.ok) {
@@ -187,34 +175,41 @@ const SchemeDetailPage = () => {
             </button>
 
             {compareError && <p className="error-text">{compareError}</p>}
-
             {comparison && (
               <div className="comparison-result">
                 <table className="comparison-table">
                   <thead>
                     <tr>
                       <th>Criterion</th>
-                      {comparison.schemes.map((name) => (
-                        <th key={name}>{name}</th>
-                      ))}
+                      <th>{scheme.name}</th>
+                      {selectedIds.map((id) => {
+                        const selectedScheme = relatedSchemes.find((s) => s._id === id);
+                        return (
+                          <th key={id}>
+                            {selectedScheme ? selectedScheme.name : "Selected Scheme"}
+                          </th>
+                        );
+                      })}
                     </tr>
                   </thead>
                   <tbody>
-                    {comparison.rows.map((row) => (
-                      <tr key={row.criterion}>
-                        <td className="criterion-cell">{row.criterion}</td>
-                        {comparison.schemes.map((name) => (
-                          <td key={name}>{row.values[name] || "—"}</td>
+                    {comparison.criteria?.map((item, rowIdx) => (
+                      <tr key={item.feature || rowIdx}>
+                        <td className="criterion-cell">{item.feature}</td>
+                        {(item.values || []).map((val, valIdx) => (
+                          <td key={valIdx}>{val || "—"}</td>
                         ))}
                       </tr>
                     ))}
                   </tbody>
                 </table>
 
-                <div className="comparison-recommendation">
-                  <h4>In simple terms</h4>
-                  <p>{comparison.recommendation}</p>
-                </div>
+                {comparison.recommendation && (
+                  <div className="comparison-recommendation">
+                    <h4>In simple terms</h4>
+                    <p>{comparison.recommendation}</p>
+                  </div>
+                )}
               </div>
             )}
           </div>

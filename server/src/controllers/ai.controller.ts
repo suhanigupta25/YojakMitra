@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { AiService } from "../services/ai.service";
+import scheme from "../models/Scheme";
 
 export const handleAiAssistant = async (req: Request, res: Response) => {
   const { message } = req.body;
@@ -18,13 +19,19 @@ export const handleAiAssistant = async (req: Request, res: Response) => {
 };
 
 export const handleCompareSchemes = async (req: Request, res: Response) => {
-  const { schemes } = req.body;
+  const { schemeIds } = req.body; 
 
-  if (!schemes || !Array.isArray(schemes) || schemes.length < 2) {
-    return res.status(400).json({ error: "At least two schemes are required for comparison." });
+  if (!schemeIds || !Array.isArray(schemeIds) || schemeIds.length < 2) {
+    return res.status(400).json({ error: "At least two scheme IDs are required for comparison." });
   }
 
   try {
+    const schemes = await scheme.find({ _id: { $in: schemeIds } });
+
+    if (schemes.length < 2) {
+      return res.status(404).json({ error: "Could not find enough matching schemes to compare." });
+    }
+
     const comparisonResult = await AiService.compareSchemes(schemes);
     return res.json(comparisonResult);
   } catch (error: any) {
