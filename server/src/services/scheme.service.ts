@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { BrowseSchemeDTO, EligibilityDTO, SearchSchemeDTO, SchemesDTO } from "../dto/scheme.dto";
 import scheme, { DisplaySchemes } from "../models/Scheme";
 
@@ -67,9 +68,11 @@ export class SchemeService {
         return result;
     }
 
-    public async getSchemeById(id: string): Promise<DisplaySchemes | null> {
-        const result = await scheme.findById(id);
-        return result;
+    public async getSchemeById(id: string) {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            throw new Error('Invalid Scheme ID format');
+        }
+        return await scheme.findById(id);
     }
 
     private escapeRegex(str: string): string {

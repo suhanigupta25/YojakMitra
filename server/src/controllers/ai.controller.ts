@@ -1,108 +1,41 @@
 import { Request, Response } from "express";
-import { Type } from "@google/genai";
-import { aiClient } from "../config/ai";
-import scheme from "../models/Scheme";
-
-const escapeRegex = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
+import { AiService } from "../services/ai.service";
 
 export const handleAiAssistant = async (req: Request, res: Response) => {
-    const { message } = req.body;
+  const { message } = req.body;
 
-    if (!message || typeof message !== "string" || !message.trim()) {
-        return res.status(400).json({ error: "A non-empty 'message' string is required" });
-    }
+  if (!message || typeof message !== "string" || !message.trim()) {
+    return res.status(400).json({ error: "A non-empty 'message' string is required" });
+  }
 
-    try {
-        const keywords = Array.from(
-            new Set(message.toLowerCase().split(/\s+/).filter((w) => w.length > 3))
-        ).slice(0, 6);
-
-        let relevantSchemes = [];
-
-        if (keywords.length > 0) {
-            const searchConditions = keywords.flatMap((k) => {
-                const safeKeyword = escapeRegex(k);
-                return [
-                    { name: { $regex: safeKeyword, $options: "i" } },
-                    { description: { $regex: safeKeyword, $options: "i" } },
-                    { category: { $regex: safeKeyword, $options: "i" } },
-                ];
-            });
-            relevantSchemes = await scheme.find({ $or: searchConditions }).limit(15);
-        } else {
-            relevantSchemes = await scheme.find().limit(15);
-        }
-
-        const schemeContext = relevantSchemes.length
-            ? relevantSchemes
-                  .map(
-                      (s: any) =>
-                          `- ${s.name} | Category: ${s.category || "N/A"} | Eligibility: ${s.eligibility || "N/A"} | State: ${s.state || "N/A"}`
-                  )
-                  .join("\n")
-            : "No matching schemes found in the database.";
-
-        const response = await aiClient.models.generateContent({
-            model: "gemini-2.0-flash",
-            contents: message,
-            config: {
-                maxOutputTokens: 800,
-                systemInstruction: `You are YojnaMitra AI. Only recommend from this list:\n${schemeContext}`,
-            },
-        });
-
-        res.json({ reply: response.text });
-    } catch (error) {
-        console.error("AI Assistant Error:", error);
-        res.status(500).json({ error: "Failed to generate AI response." });
-    }
+  try {
+    const reply = await AiService.getAssistantReply(message);
+    return res.json({ reply });
+  } catch (error) {
+    console.error("AI Assistant Error:", error);
+    return res.status(500).json({ error: "Failed to generate AI response." });
+  }
 };
 
 export const handleCompareSchemes = async (req: Request, res: Response) => {
-    const { schemes } = req.body;
+  const { schemes } = req.body;
 
-    if (!schemes || !Array.isArray(schemes) || schemes.length < 2) {
-        return res.status(400).json({ error: "At least two schemes are required for comparison." });
+  if (!schemes || !Array.isArray(schemes) || schemes.length < 2) {
+    return res.status(400).json({ error: "At least two schemes are required for comparison." });
+  }
+
+  try {
+    const comparisonResult = await AiService.compareSchemes(schemes);
+    return res.json(comparisonResult);
+  } catch (error: any) {
+    console.error("Comparison Error:", error);
+
+    if (error?.status === 429 || error?.message?.includes("Quota exceeded")) {
+      return res.status(429).json({
+        error: "AI rate limit reached. Please wait a minute and try again.",
+      });
     }
 
-    try {
-        const comparisonContext = schemes
-            .map(
-                (s: any) =>
-                    `Scheme: ${s.name}\n- Category: ${s.category}\n- Eligibility: ${s.eligibility}\n- Key Specs: ${s.incomeLimit || "None"}`
-            )
-            .join("\n\n");
-
-        const response = await aiClient.models.generateContent({
-            model: "gemini-2.0-flash",
-            contents: `Compare these government schemes objectively:\n\n${comparisonContext}`,
-            config: {
-                responseMimeType: "application/json",
-                responseSchema: {
-                    type: Type.OBJECT,
-                    properties: {
-                        criteria: {
-                            type: Type.ARRAY,
-                            items: {
-                                type: Type.OBJECT,
-                                properties: {
-                                    feature: { type: Type.STRING },
-                                    values: { type: Type.ARRAY, items: { type: Type.STRING } },
-                                },
-                                required: ["feature", "values"],
-                            },
-                        },
-                        recommendation: { type: Type.STRING },
-                    },
-                    required: ["criteria", "recommendation"],
-                },
-            },
-        });
-
-        res.json(JSON.parse(response.text || "{}"));
-    } catch (error) {
-        console.error("Comparison Error:", error);
-        res.status(500).json({ error: "Failed to generate AI comparison." });
-    }
+    return res.status(500).json({ error: "Failed to generate AI comparison." });
+  }
 };
