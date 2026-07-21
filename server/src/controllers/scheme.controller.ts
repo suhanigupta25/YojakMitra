@@ -1,3 +1,4 @@
+import { isValidObjectId } from "mongoose";
 import { BrowseSchemeDTO,SearchSchemeDTO,EligibilityDTO } from "../dto/scheme.dto";
 import { SchemeService } from "../services/scheme.service";
 import {Response,Request} from "express";
@@ -35,16 +36,28 @@ export const searchSchemes=async(req : Request,res:Response)=>{
     res.status(200).json(result);
 }
 
+
 export const getSchemeById = async (req: Request, res: Response) => {
-    const id = req.params.id as string;
-    const result = await schemeservice.getSchemeById(id);
-    if (!result) {
-        return res.status(404).json({
-            message: "Scheme not found"
-        });
+  try {
+    const { id } = req.params;
+
+    if (typeof id !== 'string' || !isValidObjectId(id)) {
+      return res.status(400).json({ 
+        message: 'Invalid Scheme ID provided.' 
+      });
     }
 
-    return res.status(200).json(result);
+    const scheme = await schemeservice.getSchemeById(id);
+    
+    if (!scheme) {
+      return res.status(404).json({ message: 'Scheme not found.' });
+    }
+
+    return res.status(200).json(scheme);
+  } catch (error) {
+    console.error('Error fetching scheme by ID:', error);
+    return res.status(500).json({ 
+      message: 'Server error while fetching scheme details.' 
+    });
+  }
 };
-
-
