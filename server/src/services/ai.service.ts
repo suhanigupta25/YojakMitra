@@ -41,7 +41,7 @@ export class AiService {
       contents: message,
       config: {
         maxOutputTokens: 800,
-        systemInstruction: `You are YojnaMitra AI. Only recommend from this list:\n${schemeContext}`,
+        systemInstruction: `You are YojnaMitra AI Scheme assistant.Tell about the asked scheme or context or explain any difficult term in a short way .Only recommend from this list:\n${schemeContext}`,
       },
     });
 
@@ -59,7 +59,7 @@ export class AiService {
 
     const response = await aiClient.models.generateContent({
       model: "gemini-3.1-flash-lite",
-      contents: `Compare these government schemes objectively:\n\n${comparisonContext}`,
+      contents: `You are Scheme consultant .Compare these government schemes objectively:\n\n${comparisonContext},give the honest recommendation`,
       config: {
         responseMimeType: "application/json",
         responseSchema: {

@@ -16,14 +16,12 @@ const AiAssistant = () => {
         const trimmedQuery = query.trim();
         if (!trimmedQuery || isLoading) return;
 
-        // 1. Immediately append the user's message to the chat layout
         const userMessage: Message = { sender: "user", text: trimmedQuery };
         setMessages((prev) => [...prev, userMessage]);
-        setQuery(""); // Clear the input field immediately
+        setQuery(""); 
         setIsLoading(true);
 
         try {
-            // 2. Make the real network request to your backend endpoint
             const response = await fetch("http://localhost:5000/aiassistant", {
                 method: "POST",
                 headers: {
@@ -38,7 +36,6 @@ const AiAssistant = () => {
 
             const data = await response.json();
             
-            // 3. Append the real AI response from the server
             setMessages((prev) => [...prev, { sender: "ai", text: data.reply }]);
         } catch (error) {
             console.error("Error communicating with AI backend:", error);
@@ -55,7 +52,6 @@ const AiAssistant = () => {
         <div className="ai-minimal-section">
             <div className="ai-minimal-wrapper">
                 
-                {/* Condition: Show header only when there are no messages yet */}
                 {messages.length === 0 && (
                     <div className="ai-minimal-header">
                         <h2>Consult YojnaMitra AI</h2>
@@ -65,7 +61,6 @@ const AiAssistant = () => {
                     </div>
                 )}
 
-                {/* The Active Chat View (replaces the void frame) */}
                 <div className="ai-minimal-void">
                     <div className="chat-history-container">
                         {messages.map((msg, index) => (
@@ -81,7 +76,6 @@ const AiAssistant = () => {
                     </div>
                 </div>
 
-                {/* Integrated Input Base Interface at the bottom */}
                 <form className="ai-minimal-input-form" onSubmit={handleChatSubmit}>
                     <div className="ai-input-container">
                         <input
