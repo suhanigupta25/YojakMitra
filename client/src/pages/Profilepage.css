@@ -1,0 +1,360 @@
+/* ==========================================================================
+   Espresso Theme & Global Layout
+   ========================================================================== */
+.espresso-theme {
+  background-color: #f7f3ee;
+  color: #1f150e;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
+.profile-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ==========================================================================
+   Hero Banner
+   ========================================================================== */
+.profile-banner {
+  position: relative;
+  background: linear-gradient(135deg, #2c1d11 0%, #4a3425 100%);
+  border-radius: 16px;
+  margin-top: 24px;
+  padding: 32px;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(44, 29, 17, 0.08);
+  overflow: hidden;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: -40%;
+  right: -15%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(198, 139, 89, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.profile-hero {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.avatar-wrapper {
+  position: relative;
+}
+
+.avatar-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #c68b59;
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+}
+
+.badge-verified {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #c68b59;
+  color: #ffffff;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+  border: 2px solid #2c1d11;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.user-name {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.user-handle {
+  margin: 4px 0 0 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   Layout Grid
+   ========================================================================== */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+@media (max-width: 840px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+  .profile-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+   Cards & Data Lists
+   ========================================================================== */
+.espresso-card {
+  background-color: #ffffff;
+  border: 1px solid #e6ded6;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(44, 29, 17, 0.05);
+}
+
+.card-title {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c1d11;
+}
+
+.card-subtitle {
+  margin: 0 0 16px 0;
+  font-size: 12px;
+  color: #736254;
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  border-bottom: 1px dashed #e6ded6;
+  padding-bottom: 8px;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.info-label {
+  color: #736254;
+  font-weight: 500;
+}
+
+.info-value {
+  color: #2c1d11;
+  font-weight: 600;
+}
+
+.password-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-pwd-btn {
+  background: none;
+  border: none;
+  color: #c68b59;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* ==========================================================================
+   Tabs & Schemes
+   ========================================================================== */
+.tabs-header {
+  display: flex;
+  gap: 12px;
+  border-bottom: 2px solid #e6ded6;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 10px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #736254;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: #2c1d11;
+}
+
+.tab-btn.active {
+  color: #c68b59;
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #c68b59;
+  border-radius: 2px 2px 0 0;
+}
+
+.schemes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 32px;
+  color: #736254;
+  font-size: 14px;
+}
+
+.scheme-card {
+  border: 1px solid #e6ded6;
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.scheme-card:hover {
+  border-color: #c68b59;
+  transform: translateY(-1px);
+}
+
+.scheme-category {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #c68b59;
+  font-weight: 700;
+}
+
+.scheme-title {
+  margin: 4px 0;
+  font-size: 16px;
+  color: #2c1d11;
+}
+
+.scheme-benefit {
+  margin: 0;
+  font-size: 13px;
+  color: #736254;
+}
+
+.scheme-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.meta-date {
+  font-size: 12px;
+  color: #736254;
+}
+
+.status-pill {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-pill.approved {
+  background-color: #e6f4ea;
+  color: #137333;
+}
+
+.status-pill.under-review {
+  background-color: #fef7e0;
+  color: #b06000;
+}
+
+.scheme-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn-espresso-primary {
+  background-color: #c68b59;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-espresso-primary:hover {
+  background-color: #b07848;
+}
+
+.btn-espresso-secondary {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+
+.btn-espresso-outline {
+  background: transparent;
+  color: #736254;
+  border: 1px solid #e6ded6;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-espresso-outline:hover {
+  border-color: #2c1d11;
+  color: #2c1d11;
+}
