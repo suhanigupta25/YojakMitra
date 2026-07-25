@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import schemeRouter from "./routes/scheme.route";
 import aiRouter from "./routes/ai.routes";
+import authRoutes from "./routes/auth.routes";
 
 dotenv.config();
 
@@ -16,8 +17,6 @@ app.get("/", (req, res) => {
 
 app.use(schemeRouter);
 app.use(aiRouter);
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`YojnaMitra AI Backend running on port ${PORT}`));
+app.use(authRoutes);
 
 export default app;

@@ -2,11 +2,11 @@ import { Router } from "express";
 import { login, signup ,getProfile} from "../controllers/auth.controller";
 import {restrictToAuth} from "../middleware/auth.middleware"
 
-const router = Router();
+const authRouter = Router();
 
-router.post("/login", login);
-router.post("/signup", signup);
+authRouter.post("/login", login);
+authRouter.post("/signup", signup);
 
-router.get('/profile',restrictToAuth,getProfile);
+authRouter.get('/profile',restrictToAuth,getProfile);
 
-export default router;
+export default authRouter;

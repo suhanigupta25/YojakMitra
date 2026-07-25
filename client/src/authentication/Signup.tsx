@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './AuthPages.css';
+import { NavLink } from 'react-router-dom';
 
 export const SignupPage= () => {
   const [formData, setFormData] = useState({
@@ -23,14 +24,13 @@ export const SignupPage= () => {
     setError(null);
     setLoading(true);
 
-    // Map properties to meet exact structural types
     const payload = {
       ...formData,
-      age: Number(formData.age), // Ensuring correct type casting
+      age: Number(formData.age), 
     };
 
     try {
-      const response = await fetch('/api/auth/signup', {
+      const response = await fetch('http://localhost:5000/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -42,7 +42,6 @@ export const SignupPage= () => {
         throw new Error(data.message || 'Registration failed. Try changing values.');
       }
 
-      // Automatically store returned initial tokens upon account creation
       localStorage.setItem('refreshToken', data.refreshToken);
       sessionStorage.setItem('accessToken', data.accessToken);
 
@@ -164,7 +163,7 @@ export const SignupPage= () => {
 
         <div className="auth-footer">
           Already have an account?{' '}
-          <a href="/login" className="auth-link">Sign In</a>
+          <NavLink to="/login" className="auth-link">Login</NavLink>
         </div>
       </div>
     </div>
