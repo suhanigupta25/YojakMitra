@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-interface TokenPayload {
+export interface TokenPayload {
   userId: string;
   email: string;
 }
@@ -61,14 +61,14 @@ export class AuthService {
     }
 
     public async getProfile(userId : string){
-        try{
-            const profileData=await User.findById(userId);
-            return profileData;
-        }
-        catch(error :any){
-            throw new Error("Unable to find profile");
-        }
+    try{
+        const profileData=await User.findById(userId).select('-password');
+        return profileData;
     }
+    catch(error :any){
+        throw new Error("Unable to find profile");
+    }
+}
 
     private hashPassword(password: string): Promise<string> {
         const saltRounds = 10;
@@ -79,26 +79,31 @@ export class AuthService {
         return bcrypt.compare(password, hash);
   }
 
-    async registerUser(userData :RegisteredUser){
+     async registerUser(userData :RegisteredUser){
         const existingUser=await User.findOne({username: userData.username});
         if(existingUser){
-            throw new Error("Already registed");
+            throw new Error("Already registered");
         }
-        else{
-            const hash=await this.hashPassword(userData.password);
-            return User.create({...userData,password: hash});
-        }
+        const hash=await this.hashPassword(userData.password);
+        const newUser = await User.create({...userData,password: hash});
+ 
+        const payload: TokenPayload = {
+            userId: newUser.id,
+            email: newUser.email
+        };
+        const tokens = this.generateTokens(payload);
+ 
+        const { password, ...safeUser } = newUser.toObject();
+ 
+        return { user: safeUser, ...tokens };
     }
 
     async loginUser(username: string, password:string):Promise<Token>{
         const existingUser=await User.findOne({username});
-        
         if(!existingUser){
             throw new Error("Invalid Credentials");
         }
-        const existinghash=existingUser.password;
-        const hash=await this.hashPassword(password);
-        const isSamePassword=await this.comparePassword(existinghash,hash);
+        const isSamePassword=await this.comparePassword(password,existingUser.password);
         if(!isSamePassword){
             throw new Error("Invalid Credentials");
         }

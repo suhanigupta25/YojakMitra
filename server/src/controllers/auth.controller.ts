@@ -23,12 +23,14 @@ export async function signup(req: Request,res :Response){
         return res.status(400).json({message: error.message});
     }
 }
-
-export function getProfile(req :Request,res:Response){
+export async function getProfile(req :Request,res:Response){
     try{
-        const reqWithUser = req as Request & { user?: any };
-        const userId = reqWithUser.user?.id;
-        return res.status(201).json(userId);
+        const userId=req.user.userId;
+        const profile = await authservice.getProfile(userId);
+        if(!profile){
+            return res.status(404).json({message: "Profile not found"});
+        }
+        return res.status(200).json(profile);
     }
     catch(error : any){
         return res.status(401).json({message: "Unauthorized"});
