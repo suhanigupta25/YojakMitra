@@ -26,8 +26,9 @@ export async function signup(req: Request,res :Response){
 
 export function getProfile(req :Request,res:Response){
     try{
-        const userId=req.user.userId;
-        return authservice.getProfile(userId);
+        const reqWithUser = req as Request & { user?: any };
+        const userId = reqWithUser.user?.id;
+        return res.status(201).json(userId);
     }
     catch(error : any){
         return res.status(401).json({message: "Unauthorized"});

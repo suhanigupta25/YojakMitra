@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import './ProfilePage.css';
 
 export interface RegisteredUser {
@@ -7,23 +8,64 @@ export interface RegisteredUser {
   gender: string;
   username: string;
   email: string;
-  password?: string;
 }
 
+const API_URL = 'http://localhost:5000';
+
 export const ProfilePage = () => {
-  const [user, setUser] = useState<RegisteredUser | null>(() => {
-    const savedUser = localStorage.getItem('registeredUser');
-    return savedUser ? JSON.parse(savedUser) : null;
-  });
+  const [user, setUser] = useState<RegisteredUser | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const [showPassword, setShowPassword] = useState(false);
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const token = sessionStorage.getItem('accessToken');
 
-  if (!user) {
+      if (!token) {
+        setError('You need to log in to view your profile.');
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_URL}/profile`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || 'Unable to load profile.');
+        }
+
+        setUser(data);
+      } catch (err: unknown) {
+        setError(err instanceof Error ? err.message : 'Unable to load profile.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="espresso-theme profile-container">
+        <div className="espresso-card" style={{ textAlign: 'center', padding: '2rem' }}>
+          <h2>Loading profile...</h2>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !user) {
     return (
       <div className="espresso-theme profile-container">
         <div className="espresso-card" style={{ textAlign: 'center', padding: '2rem' }}>
           <h2>No Profile Data Found</h2>
-          <p>Please complete the signup form to view your profile details.</p>
+          <p>{error || 'Please log in to view your profile details.'}</p>
+          <NavLink to="/login" className="auth-link">Go to Login</NavLink>
         </div>
       </div>
     );
@@ -49,7 +91,6 @@ export const ProfilePage = () => {
         </div>
       </header>
 
-      {/* User Details Grid */}
       <main className="profile-details-grid">
         <div className="espresso-card">
           <h2 className="card-title">Account Details</h2>
@@ -65,21 +106,6 @@ export const ProfilePage = () => {
             <div className="info-item">
               <span className="info-label">Email</span>
               <span className="info-value">{user.email}</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">Password</span>
-              <span className="info-value password-field">
-                {showPassword ? (user.password || '••••••••') : '••••••••'}
-                {user.password && (
-                  <button
-                    type="button"
-                    className="toggle-pwd-btn"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? 'Hide' : 'Show'}
-                  </button>
-                )}
-              </span>
             </div>
           </div>
         </div>

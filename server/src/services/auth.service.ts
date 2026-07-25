@@ -78,7 +78,7 @@ export class AuthService {
 
     async registerUser(userData :RegisteredUser){
         const existingUser=await User.findOne({username: userData.username});
-        if(!existingUser){
+        if(existingUser){
             throw new Error("Already registed");
         }
         else{
@@ -89,11 +89,13 @@ export class AuthService {
 
     async loginUser(username: string, password:string):Promise<Token>{
         const existingUser=await User.findOne({username});
+        
         if(!existingUser){
             throw new Error("Invalid Credentials");
         }
+        const existinghash=existingUser.password;
         const hash=await this.hashPassword(password);
-        const isSamePassword=await this.comparePassword(password,hash);
+        const isSamePassword=await this.comparePassword(existinghash,hash);
         if(!isSamePassword){
             throw new Error("Invalid Credentials");
         }
