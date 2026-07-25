@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './AuthPages.css';
 
-export const SignupPage: React.FC = () => {
+export const SignupPage= () => {
   const [formData, setFormData] = useState({
     name: '',
     age: '',

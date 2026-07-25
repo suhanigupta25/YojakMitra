@@ -10,7 +10,7 @@ export interface RegisteredUser {
   password?: string;
 }
 
-export const ProfilePage: React.FC = () => {
+export const ProfilePage = () => {
   const [user, setUser] = useState<RegisteredUser | null>(() => {
     const savedUser = localStorage.getItem('registeredUser');
     return savedUser ? JSON.parse(savedUser) : null;

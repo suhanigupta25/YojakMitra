@@ -13,6 +13,7 @@ import AiChatbot from './pages/AiChatbot';
 import ExploreSchemes from './pages/ExploreScheme';
 import { LoginPage } from './authentication/Login';
 import { SignupPage } from './authentication/Signup';
+import ProfilePage from './pages/Profilepage';
 
 const Home = () => {
   return (
@@ -49,6 +50,7 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
         </Route>
 
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
       </Routes>
