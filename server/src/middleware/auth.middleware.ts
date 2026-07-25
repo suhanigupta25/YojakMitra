@@ -1,26 +1,33 @@
-import { NextFunction } from "express";
-import {AuthService} from "../services/auth.service"
-import {Response,Request} from "express";
+import { NextFunction, Response, Request } from "express";
+import { AuthService } from "../services/auth.service";
 
-const authService= new AuthService();
+const authService = new AuthService();
+
+export interface AuthenticatedRequest extends Request {
+  user?: any;
+}
 
 export async function restrictToAuth(
-    req: Request,
-    res: Response,
-    next: NextFunction){
-    try{
-        const authHeader=req.headers.authorization;
-        const token=authHeader?.split(" ")[1];
-        if (!token) {
-            return res.status(401).json({ message: "Token missing" });
-        }
-        const payload=authService.verifyAccessToken(token);
-        req.user=payload;
-        next();
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const authHeader = req.headers.authorization;
+    const token = authHeader?.split(" ")[1];
+    
+    if (!token) {
+      return res.status(401).json({ message: "Token missing" });
     }
-    catch(error){
-        return res.status(401).json({
-            message: "unauthorized"
-        });
-    }
+    
+    const payload = authService.verifyAccessToken(token);
+    
+    (req as any).user = payload;
+    
+    next();
+  } catch (error) {
+    return res.status(401).json({
+      message: "unauthorized"
+    });
+  }
 }

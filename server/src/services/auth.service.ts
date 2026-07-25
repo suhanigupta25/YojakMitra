@@ -1,6 +1,9 @@
 import bcrypt from "bcrypt";
 import jwt, { Secret, SignOptions } from "jsonwebtoken";
 import User,{RegisteredUser} from "../models/user";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 interface TokenPayload {
   userId: string;
@@ -20,7 +23,7 @@ export class AuthService {
 
   constructor() {
     const jwtSecretEnv = process.env.JWT_SECRET;
-    const refreshSecretEnv = process.env.REFRESH_SECRET;
+    const refreshSecretEnv = process.env.JWT_REFRESH_SECRET;
    
     if (!jwtSecretEnv || !refreshSecretEnv) {
       throw new Error('JWT secrets must be defined in environment variables');
@@ -29,7 +32,7 @@ export class AuthService {
     this.refreshSecret = refreshSecretEnv;
 
     this.jwtExpiresIn = (process.env.JWT_EXPIRES_IN || '1h') as SignOptions['expiresIn'];
-    this.refreshExpiresIn = (process.env.REFRESH_EXPIRES_IN || '7d') as SignOptions['expiresIn'];
+    this.refreshExpiresIn = (process.env.JWT_REFRESH_EXPIRES_IN || '7d') as SignOptions['expiresIn'];
   }
 
     private generateTokens(payload: TokenPayload): Token{

@@ -45,7 +45,7 @@ export const SignupPage= () => {
       localStorage.setItem('refreshToken', data.refreshToken);
       sessionStorage.setItem('accessToken', data.accessToken);
 
-      window.location.href = '/search';
+      window.location.href = '/login';
     } catch (err: any) {
       setError(err.message || 'Registration failed.');
     } finally {
