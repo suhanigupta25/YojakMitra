@@ -25,8 +25,12 @@ export async function signup(req: Request,res :Response){
 }
 export async function getProfile(req :Request,res:Response){
     try{
-        const userId=req.user.userId;
-        const profile = await authservice.getProfile(userId);
+        const userId=req.user?.userId;
+        if(!userId){
+            return res.status(404).json({message: "Profile not found"});
+         
+        }
+        const profile = await authservice.getProfile(userId!);
         if(!profile){
             return res.status(404).json({message: "Profile not found"});
         }
