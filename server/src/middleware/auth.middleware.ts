@@ -3,10 +3,6 @@ import { AuthService } from "../services/auth.service";
 
 const authService = new AuthService();
 
-export interface AuthenticatedRequest extends Request {
-  user?: any;
-}
-
 export async function restrictToAuth(
   req: Request,
   res: Response,
@@ -22,7 +18,7 @@ export async function restrictToAuth(
     
     const payload = authService.verifyAccessToken(token);
     
-    (req as any).user = payload;
+    req.user = payload;
     
     next();
   } catch (error) {
