@@ -41,7 +41,8 @@ export class AiService {
       contents: message,
       config: {
         maxOutputTokens: 800,
-        systemInstruction: `You are YojnaMitra AI Scheme assistant.Tell about the asked scheme or context or explain any difficult term in a short way .Only recommend from this list:\n${schemeContext}`,
+        systemInstruction: `You are YojnaMitra AI Scheme assistant.Tell about the asked scheme or context or explain any difficult term in a short way .Only recommend from this list:\n${schemeContext}
+        , and donot give the response in bold text or other thing answer normally`,
       },
     });
 

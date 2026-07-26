@@ -1,5 +1,5 @@
 /* ==========================================================================
-   YojnaMitra AI - Nude Professional Espresso Theme (No :root variables)
+   YojnaMitra AI - Nude Professional Espresso Theme (Fixed Layout)
    ========================================================================== */
 
 /* Base Container Styling */
@@ -8,58 +8,129 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f5efe6; /* Elegant warm nude base */
+  background-color: #f5efe6;
   padding: 24px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #2d1e18; /* Deep rich coffee brown */
+  color: #2d1e18;
+  box-sizing: border-box;
 }
 
-/* Wrapper Card - Setup as a Flexbox Column to lock the form to the bottom */
+/* Wrapper Card - Setup as a Flexbox Column */
 .ai-minimal-wrapper {
-  background-color: #fdfbf7; /* Soft cream */
+  background-color: #fdfbf7;
   width: 100%;
   max-width: 680px;
-  height: 600px; /* Fixed height to allow bottom positioning */
+  height: 80vh; /* Scalable responsive height */
+  max-height: 700px;
+  min-height: 450px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Pushes header to top, form to bottom */
   border-radius: 16px;
-  border: 1px solid #ebdccb; /* Gentle tan */
+  border: 1px solid #ebdccb;
   box-shadow: 0 10px 30px rgba(74, 53, 42, 0.06);
-  padding: 32px;
+  padding: 28px;
   box-sizing: border-box;
-  position: relative;
+  overflow: hidden; /* Clips elements inside wrapper boundary */
 }
 
 /* Minimal Header Masthead (Top) */
 .ai-minimal-header {
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+  flex-shrink: 0;
 }
 
 .ai-minimal-header h2 {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #2d1e18;
-  margin: 0 0 8px 0;
+  margin: 0 0 6px 0;
   letter-spacing: -0.02em;
 }
 
 .ai-minimal-header p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #4a352a; /* Muted warm brown */
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #4a352a;
   margin: 0;
   opacity: 0.85;
 }
 
-/* Void Area (Middle) - Takes up the remaining space dynamically */
+/* Void Area (Middle) - Contains the scrollable chat */
 .ai-minimal-void {
-  flex-grow: 1;
+  flex: 1;
+  min-height: 0; /* CRITICAL: Allows flex child to shrink and scroll instead of overflowing */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+/* Dynamic Chat History Container inside the void area */
+.chat-history-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  padding-right: 6px;
+  box-sizing: border-box;
+}
+
+/* Custom Scrollbar for Chat Container */
+.chat-history-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-history-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-history-container::-webkit-scrollbar-thumb {
+  background: #ebdccb;
+  border-radius: 3px;
+}
+
+.chat-history-container::-webkit-scrollbar-thumb:hover {
+  background: #a38f80;
+}
+
+/* Chat Bubbles */
+.chat-bubble {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere; /* Prevents long unbroken text or URLs from breaking out */
+  word-break: break-word;
+}
+
+.chat-bubble p {
+  margin: 0;
+}
+
+.chat-bubble.user {
+  align-self: flex-end;
+  background-color: #2d1e18;
+  color: #fdfbf7;
+  border-bottom-right-radius: 2px;
+}
+
+.chat-bubble.ai {
+  align-self: flex-start;
+  background-color: #ebdccb;
+  color: #2d1e18;
+  border-bottom-left-radius: 2px;
+}
+
+.chat-bubble.typing-indicator {
+  opacity: 0.7;
+  font-style: italic;
 }
 
 /* Integrated Input Base Interface (Bottom) */
 .ai-minimal-input-form {
-  margin-top: auto; /* Ensures form is anchored to the bottom */
+  flex-shrink: 0; /* Keeps input anchored to bottom */
   width: 100%;
 }
 
@@ -88,10 +159,11 @@
   font-size: 0.95rem;
   color: #2d1e18;
   padding: 8px 0;
+  min-width: 0; /* Prevents input element itself from expanding parent flexbox */
 }
 
 .ai-input-container input::placeholder {
-  color: #a38f80; /* Warm taupe */
+  color: #a38f80;
   opacity: 0.8;
 }
 
@@ -105,64 +177,31 @@
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
+  white-space: nowrap;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn-ai-submit:hover {
+.btn-ai-submit:hover:not(:disabled) {
   background-color: #4a352a;
   transform: translateY(-1px);
 }
 
-.btn-ai-submit:active {
-  transform: translateY(1px);
+.btn-ai-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Responsive adjustments */
 @media (max-width: 480px) {
+  .ai-minimal-section {
+    padding: 0;
+  }
+
   .ai-minimal-wrapper {
     height: 100vh;
+    max-height: 100vh;
     border-radius: 0;
     border: none;
-    padding: 20px;
+    padding: 20px 16px;
   }
-}
-
-/* Dynamic Chat History Container inside the void area */
-.chat-history-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  overflow-y: auto;
-  padding-right: 4px;
-}
-
-/* Chat Bubbles */
-.chat-bubble {
-  max-width: 80%;
-  padding: 10px 14px;
-  border-radius: 12px;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  word-wrap: break-word;
-}
-
-.chat-bubble.user {
-  align-self: flex-end;
-  background-color: #2d1e18; /* Espresso dark for user */
-  color: #fdfbf7;
-  border-bottom-right-radius: 2px;
-}
-
-.chat-bubble.ai {
-  align-self: flex-start;
-  background-color: #ebdccb; /* Soft tan for AI */
-  color: #2d1e18;
-  border-bottom-left-radius: 2px;
-}
-
-.chat-bubble.typing-indicator {
-  opacity: 0.6;
-  font-style: italic;
 }
