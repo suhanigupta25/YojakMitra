@@ -1,3 +1,4 @@
+import { Request } from "express";
 import { TokenPayload } from "../services/auth.service";
 
 declare global {
@@ -7,5 +8,3 @@ declare global {
     }
   }
 }
-
-export {};
