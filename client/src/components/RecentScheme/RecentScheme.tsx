@@ -43,5 +43,5 @@ const SchemeCards =()=>{
     </div>
     );
 }
-export default SchemeCards
+export default SchemeCards;
 

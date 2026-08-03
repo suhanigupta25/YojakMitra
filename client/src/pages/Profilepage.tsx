@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import './ProfilePage.css';
+import './Profilepage.css';
 import { API_BASE_URL } from '../api';
 
 export interface RegisteredUser {
