@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./AiChatbot.css";
+<<<<<<< HEAD
 import { API_BASE_URL } from '../api';
 
+=======
+>>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
 
 interface Message {
   sender: "user" | "ai";
@@ -34,7 +37,11 @@ const AiAssistant = () => {
     setIsLoading(true);
 
     try {
+<<<<<<< HEAD
       const response = await fetch(`${API_BASE_URL}/aiassistant`, {
+=======
+      const response = await fetch("http://localhost:5000/aiassistant", {
+>>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
         method: "POST",
         headers: {
           "Content-Type": "application/json",

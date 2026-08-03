@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./SchemeDetails.css";
 
+<<<<<<< HEAD
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 
+=======
+>>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
 interface Scheme {
   _id: string;
   name: string;
@@ -45,13 +48,21 @@ const SchemeDetailPage = () => {
       try {
         setLoading(true);
 
+<<<<<<< HEAD
         const res = await fetch(`${API_BASE_URL}/schemes/${id}`);
+=======
+        const res = await fetch(`http://localhost:5000/schemes/${id}`);
+>>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
         const currentScheme = await res.json();
         setScheme(currentScheme);
 
         if (currentScheme.category) {
           const relatedRes = await fetch(
+<<<<<<< HEAD
             `${API_BASE_URL}/schemes?category=${encodeURIComponent(currentScheme.category)}`
+=======
+            `http://localhost:5000/schemes?category=${encodeURIComponent(currentScheme.category)}`
+>>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
           );
           const allRelated = await relatedRes.json();
           const filtered = allRelated.filter((s: Scheme) => s._id !== currentScheme._id);
@@ -89,7 +100,11 @@ const SchemeDetailPage = () => {
     const payloadIds = [scheme._id, ...selectedIds];
 
     try {
+<<<<<<< HEAD
       const res = await fetch(`${API_BASE_URL}/schemes/compare`, {
+=======
+      const res = await fetch("http://localhost:5000/schemes/compare", {
+>>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ schemeIds: payloadIds }), 

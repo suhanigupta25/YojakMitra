@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import './ProfilePage.css';
 import { API_BASE_URL } from '../api';
+=======
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import './ProfilePage.css';
+>>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
 
 export interface RegisteredUser {
   name: string;
@@ -11,6 +17,11 @@ export interface RegisteredUser {
   email: string;
 }
 
+<<<<<<< HEAD
+=======
+const API_URL = 'http://localhost:5000';
+
+>>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
 export const ProfilePage = () => {
   const [user, setUser] = useState<RegisteredUser | null>(null);
   const [loading, setLoading] = useState(true);
@@ -27,7 +38,11 @@ export const ProfilePage = () => {
       }
 
       try {
+<<<<<<< HEAD
         const response = await fetch(`${API_BASE_URL}/profile`, {
+=======
+        const response = await fetch(`${API_URL}/profile`, {
+>>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
           headers: { Authorization: `Bearer ${token}` },
         });
 
