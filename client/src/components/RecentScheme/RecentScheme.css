@@ -1,0 +1,135 @@
+/* ==========================================================================
+   Main Layout Grid Sections
+   ========================================================================== */
+.schemes-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    box-sizing: border-box;
+    background-color: #faf7f2; /* Continuous canvas matching master pages */
+}
+
+.schemes-section h1 {
+    font-family: "Didot", "Bodoni MT", "Cinzel", "Georgia", serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #3d342f;
+    margin: 0 0 3.5rem 0;
+    letter-spacing: -0.02em;
+}
+
+/* Three Column Content Wireframe */
+.schemes-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* ==========================================================================
+   Bespoke Display Card Architecture
+   ========================================================================== */
+.displaycard {
+    background-color: #ffffff;
+    border: 1px solid #e8e1db;
+    border-radius: 4px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 280px; /* Forces cards to stay level even with varying text heights */
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.displaycard h3 {
+    font-family: "Didot", "Bodoni MT", "Georgia", serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: #3d342f;
+    line-height: 1.3;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.01em;
+}
+
+.displaycard .description {
+    font-size: 0.95rem;
+    color: #7a6e67;
+    line-height: 1.6;
+    font-weight: 300;
+    margin: 0 0 2rem 0;
+}
+
+/* Editorial Hover Interactivity */
+.displaycard:hover {
+    border-color: #a88a75;
+    transform: translateY(-4px); /* Clean upward shift instead of an scale zoom */
+    box-shadow: 0 15px 35px rgba(61, 52, 47, 0.04);
+}
+
+/* ==========================================================================
+   Micro Tag Categorization Infrastructure
+   ========================================================================== */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto; /* Glues tags cleanly to the lowest edge of the card */
+}
+
+.tags-container span {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0.65rem;
+    border-radius: 2px;
+}
+
+/* Human-designed color coding for tag metrics instead of generic primary pills */
+.categoryOccupation {
+    background-color: #f3ede6;
+    color: #8c7b70;
+    border: 1px solid #e2d7cd;
+}
+
+.categoryOther {
+    background-color: #eae6df;
+    color: #6e635c;
+    border: 1px solid #d9d1c7;
+}
+
+.categoryType {
+    background-color: #f7f4ef;
+    color: #a88a75;
+    border: 1px solid #ebd9cb;
+}
+
+/* ==========================================================================
+   Viewport Responsiveness
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .schemes-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 Column fallback on tablets */
+        gap: 1.5rem;
+    }
+    
+    .schemes-section {
+        padding: 4rem 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .schemes-section h1 {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .schemes-container {
+        grid-template-columns: 1fr; /* Stacks completely vertically on small viewports */
+        gap: 1.25rem;
+    }
+    
+    .displaycard {
+        padding: 2rem;
+        min-height: auto;
+    }
+}

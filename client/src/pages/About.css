@@ -1,0 +1,297 @@
+/* ==========================================================================
+   THEME VARIABLES & BASE RESETS (Variables compiled directly inline)
+   ========================================================================== */
+
+.about-page-container {
+  min-height: 100vh;
+  background-color: #faf8f5; /* Warm alabaster nude */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: #3d342e; /* Deep espresso */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+/* Now these will ONLY target the hero section if it's inside the about page container */
+.about-page-container .hero-section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #2b231f 0%, #1c1613 100%);
+  padding: 5rem 1.5rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.about-page-container .hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.about-page-container .hero-title {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.about-page-container .gradient-text {
+  background: linear-gradient(90deg, #e6ccb2, #b08968);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-page-container .hero-description {
+  margin: 1.5rem auto 0;
+  max-width: 42rem;
+  font-size: 1.125rem;
+  color: #a39385;
+  line-height: 1.75;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  background-color: rgba(212, 163, 129, 0.15); /* Soft beige tint */
+  padding: 0.35rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #d4a381; /* Warm terracotta-nude */
+  border: 1px solid rgba(212, 163, 129, 0.3);
+  letter-spacing: 0.025em;
+}
+
+
+
+.gradient-text {
+  background: linear-gradient(90deg, #e6ccb2, #b08968); /* Luxurious nude-to-taupe gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* ==========================================================================
+   MAIN CONTENT GRID
+   ========================================================================== */
+.content-section {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+
+.grid-container {
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: 1fr;
+}
+
+.section-heading {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1c1613; /* Deep mocha black */
+  letter-spacing: -0.02em;
+}
+
+.body-paragraph {
+  margin-top: 1.25rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #61554d; /* Mid-tone warm taupe */
+}
+
+/* ==========================================================================
+   METRICS / STATS
+   ========================================================================== */
+.metrics-row {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  border-top: 1px solid #ede6de; /* Soft sand divider */
+  padding-top: 2.5rem;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1c1613;
+  line-height: 1;
+}
+
+.stat-label {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #a39385;
+  text-transform: uppercase;
+  letter-spacing: 0.075em;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   FEATURE CARDS
+   ========================================================================== */
+.features-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.25rem;
+  background-color: #ffffff;
+  padding: 1.75rem;
+  box-shadow: 0 1px 3px rgba(61, 52, 46, 0.05);
+  border: 1px solid #ede6de;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(61, 52, 46, 0.05);
+  border-color: rgba(176, 137, 104, 0.3); /* Subtle nude hover glow */
+}
+
+.icon-wrapper {
+  display: flex;
+  height: 2.75rem;
+  width: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background-color: #f7f2ed; /* Very pale cream */
+}
+
+.icon-wrapper svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  color: #7f5539; /* Deep cinnamon professional accent */
+}
+
+.card-title {
+  margin-top: 1.25rem;
+  margin-bottom: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1c1613;
+}
+
+.card-description {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  font-size: 0.925rem;
+  line-height: 1.6;
+  color: #61554d;
+}
+
+/* ==========================================================================
+   CTA ACTION BANNER (FOOTER)
+   ========================================================================== */
+.action-banner {
+  background-color: #1c1613;
+  color: #ffffff;
+  border-top: 1px solid #2b231f;
+}
+
+.banner-content {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.banner-heading {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.banner-subtext {
+  display: block;
+  margin-top: 0.25rem;
+  color: #e6ccb2; /* Soft warm nude highlight */
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+}
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background-color: #7f5539; /* Professional rich leather/brown accent */
+  padding: 0.875rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(127, 85, 57, 0.2);
+}
+
+.primary-btn:hover {
+  background-color: #9c6644; /* Slightly brighter warm nude on hover */
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(156, 102, 68, 0.3);
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVE VIEWPORTS)
+   ========================================================================== */
+
+/* Small Devices (Tablets, 640px and up) */
+@media (min-width: 640px) {
+  .hero-title {
+    font-size: 3.25rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .stat-value {
+    font-size: 2.25rem;
+  }
+}
+
+/* Large Devices (Desktops, 1024px and up) */
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 4rem;
+  }
+  
+  .grid-container {
+    grid-template-columns: 1.1fr 1.3fr;
+    align-items: start;
+    gap: 5rem;
+  }
+  
+  .banner-content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5rem 1.5rem;
+  }
+  
+  .btn-container {
+    flex-shrink: 0;
+  }
+}

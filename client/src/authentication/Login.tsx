@@ -1,0 +1,109 @@
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import './AuthPages.css';
+import { API_BASE_URL } from '../api';
+
+interface LoginUserDTO{
+    username: string;
+    password: string;
+}
+
+export const LoginPage = () => {
+  const navigate =useNavigate();
+  const [formData, setFormData] = useState<LoginUserDTO>({
+    username: '',
+    password: '',
+  });
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleLoginSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Login failed. Please check your credentials.');
+      }
+
+      localStorage.setItem('refreshToken', data.refreshToken);
+      sessionStorage.setItem('accessToken', data.accessToken); 
+
+      navigate('/');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="auth-page-container">
+      <div className="auth-card">
+        <div className="auth-header">
+          <h1 className="auth-title">Welcome Back</h1>
+          <p className="auth-subtitle">Sign in to track and compare schemes</p>
+        </div>
+
+        {error && <div className="auth-error-message">{error}</div>}
+
+        <form className="auth-form" onSubmit={handleLoginSubmit}>
+          <div className="form-group">
+            <label className="form-label" htmlFor="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              className="form-input"
+              required
+              value={formData.username}
+              onChange={handleInputChange}
+              placeholder="Enter your username"
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label" htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              className="form-input"
+              required
+              value={formData.password}
+              onChange={handleInputChange}
+              placeholder="••••••••"
+            />
+          </div>
+
+          <button type="submit" className="auth-submit-btn" disabled={loading}>
+            {loading ? 'Signing In...' : 'Sign In'}
+          </button>
+        </form>
+
+        <div className="auth-footer">
+          Don't have an account?{' '}
+          <Link to="/signup" className="auth-link">Create one here</Link>
+        </div>
+      </div>
+    </div>
+  );
+};
