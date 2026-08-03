@@ -1,7 +1,7 @@
 import './App.css'
 import SchemeCards from './components/RecentScheme/RecentScheme';
 import SearchEligibilty from './components/Search/SearchEligibilty'
-import Navbar from './components/Navbar/NavBar';
+import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import AiAssistant from './components/AiAssistantdemo/AIdemo';
 import Footer from './components/Footer/Footer';
