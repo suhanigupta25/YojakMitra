@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import './AuthPages.css';
 import { NavLink } from 'react-router-dom';
-<<<<<<< HEAD
 import { API_BASE_URL } from '../api';
-=======
->>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
+
 
 export const SignupPage= () => {
   const [formData, setFormData] = useState({
@@ -34,11 +32,7 @@ export const SignupPage= () => {
     };
 
     try {
-<<<<<<< HEAD
       const response = await fetch(`${API_BASE_URL}/signup`, {
-=======
-      const response = await fetch('http://localhost:5000/signup', {
->>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

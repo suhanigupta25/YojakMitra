@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './AuthPages.css';
-<<<<<<< HEAD
 import { API_BASE_URL } from '../api';
-=======
->>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
 
 interface LoginUserDTO{
     username: string;
@@ -31,11 +28,8 @@ export const LoginPage = () => {
     setLoading(true);
 
     try {
-<<<<<<< HEAD
+
       const response = await fetch(`${API_BASE_URL}/login`, {
-=======
-      const response = await fetch('http://localhost:5000/login', {
->>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

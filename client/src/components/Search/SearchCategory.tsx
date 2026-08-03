@@ -2,10 +2,7 @@ import "./SearchCategory.css";
 import { useState } from "react";
 import {useNavigate} from "react-router-dom";
 
-<<<<<<< HEAD
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
-=======
->>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
 
 interface Schemes {
   _id: string;
@@ -25,11 +22,8 @@ const SearchCategory = () => {
   const navigate=useNavigate();
 
   const browseCategory = async (category: string) => {
-<<<<<<< HEAD
+
     const res = await fetch(`${API_BASE_URL}/schemes?category=${encodeURIComponent(category)}`);
-=======
-    const res = await fetch(`http://localhost:5000/schemes?category=${encodeURIComponent(category)}`);
->>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
     const data = await res.json();
     setSchemes(data);
   };

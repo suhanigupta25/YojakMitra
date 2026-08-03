@@ -2,11 +2,8 @@ import { useState } from "react";
 import "./SearchEligibilty.css";
 import { useNavigate } from "react-router-dom";
 
-<<<<<<< HEAD
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 
-=======
->>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
 interface Schemes {
   _id: string;
   name: string;
@@ -49,11 +46,7 @@ const SearchEligibility = () => {
     setError("");
     setSelectedScheme(null); 
     try {
-<<<<<<< HEAD
       const result = await fetch(`${API_BASE_URL}/schemes/checkeligibilty`, {
-=======
-      const result = await fetch(`http://localhost:5000/schemes/checkeligibilty`, {
->>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
         method: "POST",
         headers: {
           "Content-Type": "application/json",

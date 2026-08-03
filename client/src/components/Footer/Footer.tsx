@@ -6,7 +6,6 @@ const Footer = () => {
     return (
         <footer className="site-footer">
             <div className="footer-container">
-                {/* Brand & Mission Brief */}
                 <div className="footer-brand-section">
                     <span className="footer-logo">YojnaMitra</span>
                     <p className="footer-tagline">
@@ -31,7 +30,6 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Bottom Row / Copyright & Meta */}
             <div className="footer-bottom">
                 <div className="footer-bottom-container">
                     <p>&copy; {currentYear} YojnaMitra. Built with care for inclusive access.</p>

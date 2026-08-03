@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import "./ExploreScheme.css";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
 import { API_BASE_URL } from '../api';
 
-=======
->>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
 
 interface Schemes {
   _id: string;
@@ -36,11 +33,8 @@ const ExploreSchemes = () => {
       setError("");
       setHasSearched(true);
       
-<<<<<<< HEAD
       const result = await fetch(`${API_BASE_URL}/schemes/search?search=${encodeURIComponent(search)}`);
-=======
-      const result = await fetch(`http://localhost:5000/schemes/search?search=${encodeURIComponent(search)}`);
->>>>>>> ab8c959a84e04d703a3ec36e4b66ab19446fcdb7
+
       
       if (!result.ok) {
         throw new Error(`Server responded with status: ${result.status}`);
